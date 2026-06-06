@@ -56,11 +56,11 @@ a { color: inherit; }
 
 .wordmark {
   font-family: var(--font-display); font-weight: 600; font-size: 21px;
-  letter-spacing: -0.4px; color: var(--primary); cursor: pointer;
+  letter-spacing: -0.4px; color: var(--ink); cursor: pointer;
   background: none; border: none; padding: 0; white-space: nowrap; text-decoration: none;
   display: inline-flex;
 }
-.wordmark .pt { color: var(--ink); }
+.wordmark .pt { color: var(--primary); }
 .wordmark-sub {
   font-family: var(--font-display); font-weight: 500; font-size: 21px;
   letter-spacing: -0.4px; color: var(--muted);
