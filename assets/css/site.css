@@ -285,8 +285,10 @@ a { color: inherit; }
 .logo-row .co {
   font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -0.4px;
   color: var(--muted); transition: color var(--duration-base) var(--ease-standard);
+  text-decoration: none; cursor: pointer;
 }
 .logo-row .co:hover { color: var(--body); }
+.logo-row a.co:focus-visible { outline: none; box-shadow: var(--shadow-focus-ring); border-radius: var(--rounded-sm); }
 
 /* ============================================================
    ABOUT (homepage block)
