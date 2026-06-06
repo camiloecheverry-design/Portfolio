@@ -13,7 +13,12 @@
    Paths resolve relative to THIS stylesheet, so they work from preview/ and
    ui_kits/ alike. No network needed — the system renders fully offline. */
 
-/* Fast static web faces */
+/* Installable variable masters */
+@font-face { font-family: 'Outfit'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('fonts/Outfit-VariableFont_wght.ttf') format('truetype-variations'); }
+@font-face { font-family: 'Inter';  font-style: normal; font-weight: 100 900; font-display: swap; src: url('fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype-variations'); }
+@font-face { font-family: 'Inter';  font-style: italic; font-weight: 100 900; font-display: swap; src: url('fonts/Inter-Italic-VariableFont_opsz_wght.ttf') format('truetype-variations'); }
+
+/* Fast static web faces (preferred for matching weights) */
 @font-face { font-family: 'Outfit'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/outfit-400.woff2') format('woff2'); }
 @font-face { font-family: 'Outfit'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/outfit-500.woff2') format('woff2'); }
 @font-face { font-family: 'Outfit'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/outfit-600.woff2') format('woff2'); }
@@ -21,15 +26,6 @@
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/inter-400.woff2') format('woff2'); }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/inter-500.woff2') format('woff2'); }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/inter-600.woff2') format('woff2'); }
-
-/* ---- Anti-FOUT ----
-   A tiny inline script in each page's <head> adds .fonts-loading to <html>
-   immediately, then removes it once document.fonts.ready resolves (with a
-   1.5s safety timeout). This hides the page for the brief moment before the
-   web fonts are ready, so text never "jumps" from a fallback face to Outfit/
-   Inter. No JS = no class added = content shows normally. */
-html.fonts-loading body { opacity: 0; }
-body { opacity: 1; transition: opacity 0.2s ease; }
 
 :root {
   /* ============ BASE TOKENS ============ */
