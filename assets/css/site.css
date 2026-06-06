@@ -154,6 +154,7 @@ a { color: inherit; }
 .btn-primary { background: var(--primary); color: var(--on-primary); }
 .btn-primary:hover { background: var(--primary-hover); }
 .btn-primary:active { background: var(--primary-active); }
+.btn-primary:disabled { background: var(--surface-raised); color: var(--disabled); cursor: not-allowed; }
 .btn-secondary { background: transparent; color: var(--ink); border-color: var(--border); }
 .btn-secondary:hover { background: var(--surface-card); border-color: var(--border-strong); }
 .btn-ghost { background: transparent; color: var(--body); padding-left: 8px; padding-right: 8px; }

@@ -335,7 +335,7 @@
         window.location.href = mailto;
         window.setTimeout(function () {
           form.reset();
-          setButton("Send message", false);
+          setButton("Send message", true);
           if (success) success.classList.add("show");
         }, 500);
         return;
@@ -365,7 +365,7 @@
         .then(function (res) {
           if (res && res.success) {
             form.reset();
-            setButton("Send message", false);
+            setButton("Send message", true);
             if (success) success.classList.add("show");
           } else {
             throw new Error((res && res.message) || "Submission failed");
@@ -373,6 +373,7 @@
         })
         .catch(function () {
           setButton("Send message", false);
+          checkRequired();
           showError(
             "Something went wrong sending your message. Please email me directly at " +
             '<a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + "</a>."
