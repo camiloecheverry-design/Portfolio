@@ -549,10 +549,34 @@ select.input {
 }
 select.input:hover { border-color: var(--border-strong); }
 .input::placeholder, .textarea::placeholder { color: var(--muted); }
-.input:focus, .textarea:focus, select.input:focus { outline: none; border-color: var(--focus-ring); box-shadow: var(--shadow-focus-ring); }
-.input.invalid, .textarea.invalid { border-color: var(--error); }
+/* Pointer focus (clicked in, typing) — subtle border emphasis only. */
+.input:focus, .textarea:focus, select.input:focus { outline: none; border-color: var(--focus-ring); }
+/* Keyboard / assistive-tech focus — full accessibility double-ring. */
+.input:focus-visible, .textarea:focus-visible, select.input:focus-visible { border-color: var(--focus-ring); box-shadow: var(--shadow-focus-ring); }
+/* Disabled */
 .input:disabled, .textarea:disabled { background: var(--canvas); color: var(--disabled); border-color: var(--hairline); cursor: not-allowed; resize: none; }
 .input:disabled::placeholder, .textarea:disabled::placeholder { color: var(--disabled); }
+/* Validation states — apply .is-error / .is-success on the field, label, and message */
+.input.is-error, .textarea.is-error { border-color: var(--error); }
+.input.is-error:focus, .textarea.is-error:focus { border-color: var(--error); }
+.input.is-error:focus-visible, .textarea.is-error:focus-visible { border-color: var(--error); box-shadow: var(--shadow-ring-error); }
+.input.is-success, .textarea.is-success { border-color: var(--success); }
+.input.is-success:focus, .textarea.is-success:focus { border-color: var(--success); }
+.input.is-success:focus-visible, .textarea.is-success:focus-visible { border-color: var(--success); box-shadow: var(--shadow-ring-success); }
+/* Keep legacy .invalid class working (used by existing JS validation) */
+.input.invalid, .textarea.invalid { border-color: var(--error); }
+.field label.is-error { color: var(--error); }
+.field label.is-success { color: var(--success); }
+/* Helper / validation message under a field */
+.field-message {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-body); font-size: 13px; font-weight: 500;
+  margin-top: 8px; color: var(--muted);
+}
+.field-message.is-error { color: var(--error); }
+.field-message.is-success { color: var(--success); }
+.field-message [data-lucide], .field-message svg { width: 15px; height: 15px; flex-shrink: 0; }
+/* Legacy field-error (used by existing JS) */
 .textarea { resize: vertical; min-height: 140px; line-height: 1.55; }
 .field-error { color: var(--error); font-size: 13px; margin-top: 8px; display: none; }
 .field-error.show { display: block; }

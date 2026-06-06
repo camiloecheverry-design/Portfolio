@@ -118,6 +118,9 @@
   --shadow-card-hover: 0px 8px 24px rgba(0, 14, 31, 0.4);
   --shadow-overlay: 0px 16px 48px rgba(0, 14, 31, 0.6);
   --shadow-focus-ring: 0 0 0 2px var(--canvas), 0 0 0 4px var(--focus-ring);
+  /* Validation focus rings — same double-ring pattern, semantic hue */
+  --shadow-ring-error: 0 0 0 2px var(--canvas), 0 0 0 4px var(--error);
+  --shadow-ring-success: 0 0 0 2px var(--canvas), 0 0 0 4px var(--success);
 
   /* ============ ICON ============ */
   --icon-size-sm: 16px;
