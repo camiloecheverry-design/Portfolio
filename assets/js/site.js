@@ -271,12 +271,25 @@
       return ok;
     }
 
+    function checkRequired() {
+      var btn = form.querySelector('[type="submit"]');
+      if (!btn) return;
+      var requiredInputs = Array.prototype.slice.call(
+        form.querySelectorAll(".input[required], .textarea[required]")
+      );
+      var allFilled = requiredInputs.every(function (inp) {
+        return (inp.value || "").trim().length > 0;
+      });
+      btn.disabled = !allFilled;
+    }
+
     form.querySelectorAll(".field").forEach(function (field) {
       var input = field.querySelector(".input, .textarea");
       if (!input) return;
       input.addEventListener("blur", function () { validateField(field); });
       input.addEventListener("input", function () {
         if (input.classList.contains("invalid")) validateField(field);
+        checkRequired();
       });
     });
 
