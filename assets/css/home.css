@@ -1,614 +1,373 @@
 /* ============================================================
-   home.css — Homepage-only styles (V.Alpha → bento-mosaic)
-   ALL rules scoped under .home-v2 — zero side-effects on other pages.
+   Home page — Agent4-inspired iteration layer
+   Scoped to `.home-v2` so it never touches the other pages.
+   Builds on tokens from colors_and_type.css + site.css.
+   Signature moves:
+     · Hero bento mosaic (super-rounded cards + stat pills + ghost pills)
+     · Barbell eyebrows (pill + connected index circle)
+     · Rounder cards, richer hover microinteractions
+     · Slightly richer scroll-reveal (rise + subtle scale)
    ============================================================ */
 
-/* ================================================================
+/* ---- richer reveal: rise + a touch of scale (home only) ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .home-v2 .reveal {
+    transform: translateY(26px) scale(0.985);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-emphasized);
+  }
+}
+.home-v2 .reveal.in { transform: none; }
+
+/* ============================================================
    HERO — bento mosaic
-   Two-column grid: [headline + stats] | [tall portrait card]
-   ================================================================ */
+   ============================================================ */
+.home-v2 .hero { padding: 88px 0 92px; }
 
-.home-v2 .hero {
-  padding: 120px 0 64px;
-}
-
-.home-v2 .bento-hero {
+.hero-bento {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 320px;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1.36fr 0.84fr;
+  grid-template-areas:
+    "lead     portrait"
+    "stats    portrait";
   gap: 16px;
-  align-items: start;
-}
-
-/* --- Headline panel (col 1 · row 1) --- */
-.home-v2 .bento-headline {
-  background: var(--surface-card);
-  border: 1px solid var(--hairline);
-  border-radius: var(--rounded-xl);
-  padding: 48px 48px 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Soft corner-light */
-.home-v2 .bento-headline::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle at top right, rgba(0, 110, 245, 0.07) 0%, transparent 65%);
-  pointer-events: none;
-}
-
-.home-v2 .hero-availability {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--success);
-  background: rgba(31, 181, 122, 0.08);
-  border: 1px solid rgba(31, 181, 122, 0.2);
-  border-radius: var(--rounded-full);
-  padding: 6px 14px;
-}
-
-.home-v2 .bento-headline h1 {
-  font-size: clamp(38px, 5.4vw, 68px);
-  line-height: 1.0;
-  letter-spacing: clamp(-1.6px, -0.03em, -2px);
-  margin: 20px 0 20px;
-}
-
-.home-v2 .bento-headline .lead {
-  font-size: 16px;
-  color: var(--muted);
-  max-width: 520px;
-  margin-bottom: 36px;
-  line-height: 1.6;
-}
-
-.home-v2 .hero-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-/* Ghost pills inside headline panel */
-.home-v2 .ghost-pill {
-  position: absolute;
-  border: 1px solid var(--hairline);
-  border-radius: var(--rounded-full);
-  pointer-events: none;
-  opacity: 0.35;
-  will-change: transform;
-}
-
-/* --- Portrait card (col 2 · rows 1–2) --- */
-.home-v2 .bento-portrait-card {
-  grid-row: 1 / 3;
-  grid-column: 2;
-  background: var(--surface-card);
-  border: 1px solid var(--hairline);
-  border-radius: var(--rounded-xl);
-  overflow: hidden;
-  position: relative;
-  min-height: 520px;
-  display: flex;
-  flex-direction: column;
-}
-
-.home-v2 .bento-portrait-card image-slot {
-  flex: 1;
-  display: block;
-  min-height: 340px;
-}
-
-.home-v2 .portrait-badge {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  background: rgba(0, 14, 31, 0.72);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--hairline);
-  border-radius: var(--rounded-full);
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--body);
   z-index: 1;
 }
 
-.home-v2 .portrait-scrim {
+/* decorative ghost pills — agent4 negative-space rhythm */
+.hero-bento .ghost-pill {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-  background: linear-gradient(to top, var(--surface-card) 0%, transparent 100%);
+  border: 1px solid var(--hairline);
+  border-radius: var(--rounded-full);
   pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
 }
+.hero-bento .gp-1 { width: 260px; height: 104px; top: -52px; left: -78px; }
+.hero-bento .gp-2 { width: 188px; height: 84px; right: 30%; bottom: -46px; }
+.hero-bento .gp-3 { width: 120px; height: 120px; right: -54px; top: 38%; }
 
-.home-v2 .portrait-cap {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: var(--muted);
-  z-index: 1;
-}
-
-/* --- Stat pills row (col 1 · row 2) --- */
-.home-v2 .bento-stats {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.home-v2 .stat-pill {
+/* shared bento card surface */
+.bento-card {
+  position: relative;
   background: var(--surface-card);
   border: 1px solid var(--hairline);
   border-radius: var(--rounded-xl);
-  padding: 20px 24px;
+  z-index: 1;
+  transition: border-color var(--duration-base) var(--ease-standard),
+              box-shadow var(--duration-base) var(--ease-standard),
+              transform var(--duration-base) var(--ease-standard);
+}
+
+/* headline panel */
+.hero-lead-card {
+  grid-area: lead;
+  padding: 52px 52px 48px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  flex: 1;
-  min-width: 120px;
-  transition:
-    border-color var(--duration-fast) var(--ease-standard),
-    transform var(--duration-fast) var(--ease-standard);
-}
-
-.home-v2 .stat-pill:hover {
-  border-color: var(--border);
-  transform: translateY(-2px);
-}
-
-.home-v2 .stat-pill.accent {
-  background: var(--primary-subtle);
-  border-color: var(--border-strong);
-}
-
-.home-v2 .stat-pill .n {
-  font-family: var(--font-display);
-  font-size: 30px;
-  font-weight: 600;
-  line-height: 1.0;
-  letter-spacing: -0.8px;
-  color: var(--ink);
-}
-
-.home-v2 .stat-pill.accent .n {
-  color: var(--accent-300);
-}
-
-.home-v2 .stat-pill .l {
-  font-size: 11px;
-  color: var(--muted);
-  line-height: 1.45;
-}
-
-
-/* ================================================================
-   BARBELL EYEBROWS — pill label ——— circle index
-   ================================================================ */
-
-.home-v2 .barbell-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  margin-bottom: 24px;
-}
-
-.home-v2 .barbell-eyebrow .eb-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.4px;
-  color: var(--muted);
-  background: var(--surface-card);
-  border: 1px solid var(--border);
-  border-radius: var(--rounded-full);
-  padding: 7px 16px;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.home-v2 .barbell-eyebrow .eb-connector {
-  width: 20px;
-  height: 1px;
-  background: var(--border);
-  flex-shrink: 0;
-}
-
-.home-v2 .barbell-eyebrow .eb-index {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--muted);
-  background: var(--surface-card);
-  border: 1px solid var(--border);
-  border-radius: var(--rounded-full);
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-
-/* ================================================================
-   LOGO STRIP — bordered pill chips
-   ================================================================ */
-
-.home-v2 .logo-strip .logo-row {
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.home-v2 .logo-strip .logo-row .co {
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: var(--rounded-full);
-  padding: 8px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--muted);
-  text-decoration: none;
-  transition:
-    border-color var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard),
-    transform var(--duration-fast) var(--ease-standard);
-  display: inline-flex;
-  align-items: center;
-}
-
-.home-v2 .logo-strip .logo-row .co:hover {
-  border-color: var(--border-strong);
-  color: var(--body);
-  transform: translateY(-2px);
-}
-
-
-/* ================================================================
-   ABOUT — cinematic portrait card
-   ================================================================ */
-
-.home-v2 .about-portrait {
-  position: relative;
-  border-radius: var(--rounded-xl);
   overflow: hidden;
 }
-
-.home-v2 .about-portrait image-slot {
-  border-radius: var(--rounded-xl);
-  display: block;
-}
-
-.home-v2 .about-portrait-badge {
+/* soft top-corner light, echoing the bento art on the about page */
+.hero-lead-card::before {
+  content: "";
   position: absolute;
-  top: 16px;
-  left: 16px;
-  background: rgba(0, 14, 31, 0.72);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--hairline);
-  border-radius: var(--rounded-full);
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--body);
-  z-index: 1;
-}
-
-.home-v2 .about-portrait-scrim {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 80px;
-  background: linear-gradient(to top, var(--canvas) 0%, transparent 100%);
+  inset: 0;
+  border-radius: inherit;
   pointer-events: none;
+  background: radial-gradient(120% 80% at 12% -10%, rgba(0,110,245,0.16), rgba(0,110,245,0) 52%);
 }
+.hero-lead-card > * { position: relative; z-index: 1; }
 
-.home-v2 .about-portrait-loc {
-  position: absolute;
-  bottom: 14px;
-  left: 16px;
-  font-size: 12px;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  z-index: 1;
+.home-v2 .hero h1 {
+  font-size: clamp(42px, 5.4vw, 68px);
+  line-height: 1.03;
+  letter-spacing: -1.8px;
+  margin: 0;
 }
+.home-v2 .hero .lead { margin-top: 24px; max-width: 46ch; }
+.home-v2 .hero-actions { margin-top: 36px; }
 
+/* portrait — tall cinematic card spanning both rows */
+.hero-portrait-card {
+  grid-area: portrait;
+  overflow: hidden;
+  background: var(--surface-raised);
+  min-height: 520px;
+}
+.hero-portrait-card image-slot { width: 100%; height: 100%; display: block; }
+.hero-portrait-card .scrim {
+  position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background: linear-gradient(to top, rgba(0,14,31,0.62), transparent 46%);
+}
+.hero-portrait-card .hero-portrait-badge {
+  position: absolute; top: 18px; right: 18px; z-index: 3;
+  background: rgba(0,14,31,0.7); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: var(--rounded-full);
+  padding: 7px 15px; font-size: 12px; font-weight: 500; color: var(--accent-300);
+}
+.hero-portrait-card .hero-portrait-cap {
+  position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 3;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--body);
+}
+.hero-portrait-card .hero-portrait-cap .loc { display: inline-flex; align-items: center; gap: 6px; }
+.hero-portrait-card:hover { border-color: var(--border); box-shadow: var(--shadow-card-hover); }
 
-/* ================================================================
-   EXPERIENCE — elevated bento cards
-   ================================================================ */
-
-.home-v2 .exp-item {
+/* stat pills row (the "10x" treatment) */
+.hero-stats-row {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.bento-stat {
+  position: relative;
   background: var(--surface-card);
   border: 1px solid var(--hairline);
-  border-radius: var(--rounded-xl);
-  padding: 32px;
-  position: relative;
+  border-radius: var(--rounded-lg);
+  padding: 22px 26px;
+  min-height: 116px;
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
   overflow: hidden;
-  transition:
-    transform var(--duration-base) var(--ease-standard),
-    border-color var(--duration-base) var(--ease-standard),
-    box-shadow var(--duration-base) var(--ease-standard);
+  transition: border-color var(--duration-base) var(--ease-standard),
+              box-shadow var(--duration-base) var(--ease-standard),
+              transform var(--duration-base) var(--ease-standard);
 }
-
-/* Soft corner-light — revealed on hover */
-.home-v2 .exp-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 220px;
-  height: 220px;
-  background: radial-gradient(circle at top right, rgba(0, 110, 245, 0.07) 0%, transparent 70%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--ease-standard);
+.bento-stat .n {
+  font-family: var(--font-display); font-weight: 600; font-size: 46px; line-height: 1;
+  letter-spacing: -1.4px; color: var(--ink);
 }
-
-.home-v2 .exp-item:hover {
+.bento-stat .l { font-size: 13px; line-height: 1.4; color: var(--muted); }
+.bento-stat:hover {
   transform: translateY(-3px);
-  border-color: var(--border-strong);
+  border-color: var(--border);
   box-shadow: var(--shadow-card-hover);
 }
-
-.home-v2 .exp-item:hover::before {
-  opacity: 1;
+/* one accent-filled pill for focal pop */
+.bento-stat.accent {
+  background: linear-gradient(158deg, #0f5ad1, #0044a0);
+  border-color: transparent;
 }
+.bento-stat.accent::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(120% 90% at 85% -20%, rgba(255,255,255,0.22), rgba(255,255,255,0) 55%);
+}
+.bento-stat.accent .n { color: #fff; position: relative; }
+.bento-stat.accent .l { color: var(--accent-100); position: relative; }
+.bento-stat.accent:hover { box-shadow: 0 12px 30px rgba(0,73,163,0.4); }
 
-.home-v2 .exp-period {
+/* ============================================================
+   BARBELL EYEBROW — pill + connected index circle
+   (agent4 Agent·4 shape, on-brand)
+   ============================================================ */
+.home-v2 .eyebrow {
+  position: relative;
+  background: var(--surface-card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--rounded-full);
+  padding: 7px 16px 7px 8px;
+  gap: 10px;
+  margin-bottom: 22px;
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
   text-transform: uppercase;
+  font-size: 12px;
   letter-spacing: 1.4px;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-
-/* Hide the inline .yr span — the mono date range carries the year */
-.home-v2 .exp-period .yr {
-  display: none;
-}
-
-/* "Most recent" badge → solid accent pill */
-.home-v2 .exp-item:first-child .exp-badge .badge {
-  background: var(--primary);
-  color: var(--on-primary);
-  border: none;
-}
-
-/* Other badges stay subtle */
-.home-v2 .exp-item:not(:first-child) .exp-badge .badge {
-  background: var(--surface-raised);
   color: var(--body);
-  border: none;
+}
+.home-v2 .eyebrow .dot { display: none; }
+.home-v2 .eyebrow .idx {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--primary); color: var(--on-primary);
+  font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0;
 }
 
+/* ============================================================
+   CARD POLISH — rounder + richer hover (home only)
+   ============================================================ */
+.home-v2 .project-card,
+.home-v2 .service-card { border-radius: var(--rounded-xl); }
 
-/* ================================================================
-   SERVICES — circular icon bubbles + pill deliverables
-   ================================================================ */
+.home-v2 .project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-strong);
+  box-shadow: 0 16px 44px rgba(0,14,31,0.55);
+}
+.home-v2 .project-card .project-thumb .ph { transition: transform var(--duration-slow) var(--ease-emphasized), color var(--duration-base) var(--ease-standard); }
+.home-v2 .project-card:hover .project-thumb .ph { transform: scale(1.08); }
+/* metadata in the DS mono technical-label voice */
+.home-v2 .project-card .meta {
+  font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1.2px; font-size: 12px;
+}
 
 .home-v2 .service-card {
-  background: var(--surface-card);
-  border: 1px solid var(--hairline);
-  border-radius: var(--rounded-xl);
-  padding: 32px;
-  position: relative;
-  overflow: hidden;
-  transition:
-    transform var(--duration-base) var(--ease-standard),
-    border-color var(--duration-base) var(--ease-standard),
-    box-shadow var(--duration-base) var(--ease-standard);
+  transition: background-color var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard),
+              box-shadow var(--duration-base) var(--ease-standard),
+              transform var(--duration-base) var(--ease-standard);
 }
-
-.home-v2 .service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 180px;
-  height: 180px;
-  background: radial-gradient(circle at top right, rgba(0, 110, 245, 0.07) 0%, transparent 70%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--ease-standard);
-}
-
 .home-v2 .service-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: var(--border-strong);
-  box-shadow: var(--shadow-card-hover);
+  box-shadow: 0 14px 38px rgba(0,14,31,0.5);
 }
-
-.home-v2 .service-card:hover::before {
-  opacity: 1;
-}
-
-/* Circular icon bubble */
+/* circular icon bubble (agent4 soft shapes) */
 .home-v2 .service-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--rounded-full);
-  background: var(--primary-subtle);
-  border: 1px solid var(--border-strong);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent-300);
-  margin-bottom: 20px;
-  transition: background var(--duration-fast) var(--ease-standard);
+  width: 56px; height: 56px; border-radius: var(--rounded-full);
+  transition: transform var(--duration-base) var(--ease-emphasized), background-color var(--duration-base) var(--ease-standard);
 }
-
-.home-v2 .service-card:hover .service-icon {
-  background: rgba(0, 110, 245, 0.18);
+.home-v2 .service-card:hover .service-icon { transform: translateY(-2px) scale(1.06); background: var(--primary); border-color: var(--primary); }
+.home-v2 .service-card:hover .service-icon [data-lucide] { color: var(--on-primary); }
+.home-v2 .service-card .num { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent-300); }
+/* deliverables → bordered pill chips */
+.home-v2 .service-card .deliverables { gap: 8px; }
+.home-v2 .service-card .deliverables .d {
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: var(--rounded-full);
+  background: var(--surface-card); color: var(--body); font-weight: 500;
 }
+.home-v2 .service-card .deliverables .d::before { display: none; }
 
-/* Mono accent label (replaces `.num`) */
-.home-v2 .service-card .num {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.4px;
-  color: var(--muted);
-  margin-bottom: 10px;
+/* about + contact portraits: rounder + lift */
+.home-v2 .contact-card { border-radius: var(--rounded-xl); }
+
+/* ---- about portrait → cinematic bento card ---- */
+.home-v2 .about-portrait { border-radius: var(--rounded-xl); position: relative; overflow: hidden; }
+.home-v2 .about-portrait .scrim {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(to top, rgba(0,14,31,0.6), transparent 52%);
 }
-
-/* Pill deliverables */
-.home-v2 .service-card .deliverables {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 20px;
+.home-v2 .about-portrait-badge {
+  position: absolute; top: 16px; left: 16px; z-index: 3;
+  background: rgba(0,14,31,0.7); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: var(--rounded-full);
+  padding: 7px 15px; font-size: 12px; font-weight: 500; color: var(--accent-300);
 }
+.home-v2 .about-portrait-cap {
+  position: absolute; left: 18px; bottom: 18px; right: 18px; z-index: 3;
+  display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--body);
+}
+.home-v2 .about-portrait-cap [data-lucide] { color: var(--accent-300); }
 
-.home-v2 .service-card .d {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--body);
+/* ---- experience rows → elevated bento cards ---- */
+.home-v2 .exp-list { display: flex; flex-direction: column; gap: 16px; position: relative; }
+.home-v2 .exp-item {
   background: var(--surface-raised);
   border: 1px solid var(--border);
-  border-radius: var(--rounded-full);
-  padding: 4px 12px;
-}
-
-
-/* ================================================================
-   CONTACT — pill contact points + circular icons
-   ================================================================ */
-
-.home-v2 .contact-points {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.home-v2 .contact-point {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--surface-card);
-  border: 1px solid var(--hairline);
-  border-radius: var(--rounded-full);
-  padding: 10px 20px 10px 10px;
-  transition:
-    border-color var(--duration-fast) var(--ease-standard),
-    transform var(--duration-fast) var(--ease-standard);
-}
-
-.home-v2 .contact-point:hover {
-  border-color: var(--border);
-  transform: translateX(4px);
-}
-
-.home-v2 .contact-point .ci {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--rounded-full);
-  background: var(--primary-subtle);
-  border: 1px solid var(--border-strong);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent-300);
-  flex-shrink: 0;
-}
-
-.home-v2 .contact-point a,
-.home-v2 .contact-point span:not(.ci) {
-  font-size: 14px;
-  color: var(--body);
-  text-decoration: none;
-}
-
-.home-v2 .contact-point a:hover {
-  color: var(--ink);
-}
-
-/* Contact form card — slight lift */
-.home-v2 .contact-card {
-  background: var(--surface-card);
-  border: 1px solid var(--hairline);
   border-radius: var(--rounded-xl);
-  padding: 40px;
-  position: relative;
-  overflow: hidden;
+  padding: 32px;
+  margin: 0;
+  isolation: isolate; overflow: hidden;
+  transition: transform var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard),
+              box-shadow var(--duration-base) var(--ease-standard);
+}
+.home-v2 .exp-item:last-child { border-bottom: 1px solid var(--border); }
+.home-v2 .exp-item::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background: radial-gradient(120% 80% at 12% -10%, rgba(0,110,245,0.12), rgba(0,110,245,0) 50%);
+  opacity: 0; transition: opacity var(--duration-base) var(--ease-standard);
+}
+.home-v2 .exp-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: 0 16px 44px rgba(0,14,31,0.5);
+}
+.home-v2 .exp-item:hover::before { opacity: 1; }
+.home-v2 .exp-item > * { position: relative; z-index: 1; }
+/* accent the "Most recent" badge */
+.home-v2 .exp-item:first-child .exp-badge .badge { background: var(--primary); color: var(--on-primary); }
+/* period range in the DS mono technical-label voice (the year keeps Outfit) */
+.home-v2 .exp-period { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px; font-size: 12px; }
+.home-v2 .exp-period .yr { font-size: 28px; letter-spacing: -0.6px; color: var(--ink); }
+
+/* ---- services: soft corner light + content above ---- */
+.home-v2 .service-card { isolation: isolate; overflow: hidden; }
+.home-v2 .service-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background: radial-gradient(120% 80% at 88% -12%, rgba(0,110,245,0.12), rgba(0,110,245,0) 52%);
+  opacity: 0; transition: opacity var(--duration-base) var(--ease-standard);
+}
+.home-v2 .service-card:hover::before { opacity: 1; }
+.home-v2 .service-card > * { position: relative; z-index: 1; }
+/* services sit on a band — raise them for contrast like the experience cards */
+.home-v2 .band .service-card,
+.home-v2 .band .exp-item { background: var(--surface-raised); border-color: var(--border); }
+
+/* ---- logo strip → pill chips ---- */
+.home-v2 .logo-row { gap: 14px; }
+.home-v2 .logo-row .co {
+  font-size: 17px; padding: 12px 24px;
+  border: 1px solid var(--hairline); border-radius: var(--rounded-full);
+  background: var(--surface-card); color: var(--body);
+  transition: color var(--duration-base) var(--ease-standard),
+              transform var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard),
+              background-color var(--duration-base) var(--ease-standard);
+}
+.home-v2 .logo-row .co:hover {
+  transform: translateY(-2px); color: var(--ink);
+  border-color: var(--border-strong); background: var(--surface-raised);
 }
 
+/* ---- contact points → pill rows + soft light card ---- */
+.home-v2 .contact-card { isolation: isolate; overflow: hidden; }
 .home-v2 .contact-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle at top right, rgba(0, 110, 245, 0.05) 0%, transparent 70%);
-  pointer-events: none;
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background: radial-gradient(110% 70% at 90% -10%, rgba(0,110,245,0.10), rgba(0,110,245,0) 48%);
 }
+.home-v2 .contact-card > * { position: relative; z-index: 1; }
+.home-v2 .contact-point {
+  background: var(--surface-card); border: 1px solid var(--hairline);
+  border-radius: var(--rounded-full); padding: 10px 18px 10px 10px; width: fit-content; max-width: 100%;
+  transition: transform var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard);
+}
+.home-v2 .contact-point:hover { transform: translateX(4px); border-color: var(--border-strong); }
+.home-v2 .contact-point .ci { border-radius: var(--rounded-full); }
 
+/* ---- decorative ghost pills in About + Contact ---- */
+.home-v2 #about, .home-v2 #contact { position: relative; overflow: clip; }
+.home-v2 #about .container, .home-v2 #contact .container { position: relative; z-index: 1; }
+.home-v2 .ghost-pill {
+  position: absolute; border: 1px solid var(--hairline);
+  border-radius: var(--rounded-full); pointer-events: none; z-index: 0; opacity: 0.55;
+}
+.home-v2 #about .sgp-1 { width: 300px; height: 120px; top: 56px; right: -96px; }
+.home-v2 #contact .sgp-1 { width: 280px; height: 116px; bottom: 24px; left: -110px; }
+.home-v2 #contact .sgp-2 { width: 150px; height: 150px; top: 40px; right: -70px; }
 
-/* ================================================================
-   RESPONSIVE
-   ================================================================ */
-
+/* ============================================================
+   RESPONSIVE — collapse bento gracefully
+   ============================================================ */
+@media (max-width: 1080px) {
+  .hero-bento {
+    grid-template-columns: 1fr 0.82fr;
+  }
+  .hero-portrait-card { min-height: 460px; }
+}
 @media (max-width: 880px) {
-  .home-v2 .bento-hero {
+  .home-v2 .hero { padding: 56px 0 64px; }
+  .hero-bento {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 12px;
+    grid-template-areas:
+      "lead"
+      "portrait"
+      "stats";
+    gap: 14px;
   }
-
-  .home-v2 .bento-portrait-card {
-    grid-row: auto;
-    grid-column: auto;
-    min-height: 300px;
-  }
-
-  .home-v2 .bento-stats {
-    gap: 8px;
-  }
-
-  .home-v2 .stat-pill {
-    min-width: 100px;
-    padding: 16px 18px;
-  }
-
-  .home-v2 .stat-pill .n {
-    font-size: 24px;
-  }
-
-  .home-v2 .bento-headline {
-    padding: 32px 28px;
-  }
-
-  .home-v2 .contact-card {
-    padding: 28px 24px;
-  }
-
-  /* Ghost pills hidden on mobile */
-  .home-v2 .ghost-pill {
-    display: none;
-  }
+  .hero-lead-card { padding: 36px 28px 32px; }
+  .home-v2 .hero h1 { font-size: 40px; letter-spacing: -1px; }
+  .hero-portrait-card { min-height: 380px; }
+  .hero-bento .ghost-pill { display: none; }
+  .home-v2 .exp-item { padding: 24px; }
+  .home-v2 #about .sgp-1, .home-v2 #contact .sgp-1, .home-v2 #contact .sgp-2 { display: none; }
+}
+@media (max-width: 480px) {
+  .home-v2 .hero h1 { font-size: 34px; }
+  .hero-stats-row { grid-template-columns: 1fr 1fr; }
+  .bento-stat { padding: 18px 18px; min-height: 100px; }
+  .bento-stat .n { font-size: 38px; }
+  .home-v2 .eyebrow { font-size: 10.5px; letter-spacing: 0.8px; padding: 6px 12px 6px 6px; }
+  .home-v2 .eyebrow .idx { width: 22px; height: 22px; font-size: 11px; }
 }
