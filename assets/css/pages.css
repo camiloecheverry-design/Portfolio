@@ -1,0 +1,201 @@
+/* ============================================================
+   Inner pages — v2 unify layer
+   Ports the homepage's Agent4-inspired language to the inner
+   pages (about / resume / blog / contact / article) so the whole
+   site reads as one system:
+     · Barbell / mono pill eyebrows
+     · Bento rounding + richer hover (lift · accent border ·
+       soft corner-light)
+     · label-mono technical-label voice on metadata
+     · Rise + subtle-scale scroll reveal
+     · Ghost pills for negative-space rhythm in page heros
+   Scoped under `.pages-v2` so it never touches the homepage.
+   Builds on tokens from colors_and_type.css + site.css.
+   ============================================================ */
+
+/* ---- richer reveal: rise + a touch of scale (match home) ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .pages-v2 .reveal {
+    transform: translateY(26px) scale(0.985);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-emphasized);
+  }
+}
+.pages-v2 .reveal.in { transform: none; }
+
+/* ============================================================
+   BARBELL / MONO EYEBROW — pill with an accent dot
+   (inner pages carry no section index, so the dot stays)
+   ============================================================ */
+.pages-v2 .eyebrow {
+  background: var(--surface-card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--rounded-full);
+  padding: 7px 16px 7px 13px;
+  gap: 9px;
+  margin-bottom: 22px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  color: var(--body);
+}
+.pages-v2 .page-hero .eyebrow { margin-bottom: 24px; }
+.pages-v2 .eyebrow .dot { width: 7px; height: 7px; background: var(--primary); }
+
+/* ============================================================
+   GHOST PILLS — faint negative-space rhythm in page heros
+   ============================================================ */
+.pages-v2 .page-hero { position: relative; overflow: clip; }
+.pages-v2 .page-hero .container { position: relative; z-index: 1; }
+.pages-v2 .page-hero::before,
+.pages-v2 .page-hero::after {
+  content: ""; position: absolute; pointer-events: none; z-index: 0; opacity: 0.5;
+  border: 1px solid var(--hairline); border-radius: var(--rounded-full);
+}
+.pages-v2 .page-hero::before { width: 300px; height: 120px; top: 44px; right: -120px; }
+.pages-v2 .page-hero::after { width: 150px; height: 150px; bottom: -54px; right: 18%; }
+
+/* ============================================================
+   CARD POLISH — rounder corners (match the bento language)
+   ============================================================ */
+.pages-v2 .edu-feature,
+.pages-v2 .study-card,
+.pages-v2 .blog-featured,
+.pages-v2 .blog-card,
+.pages-v2 .contact-info-card,
+.pages-v2 .contact-card,
+.pages-v2 .resume-card,
+.pages-v2 .available-card,
+.pages-v2 .article-pullout,
+.pages-v2 .author-bio,
+.pages-v2 .diff-image,
+.pages-v2 .bento-tile { border-radius: var(--rounded-xl); }
+
+/* ---- soft accent corner-light (cards without an existing ::before) ---- */
+.pages-v2 .edu-feature,
+.pages-v2 .study-card,
+.pages-v2 .blog-featured,
+.pages-v2 .blog-card,
+.pages-v2 .contact-info-card,
+.pages-v2 .resume-card,
+.pages-v2 .author-bio,
+.pages-v2 .article-pullout { position: relative; isolation: isolate; overflow: hidden; }
+
+.pages-v2 .edu-feature::before,
+.pages-v2 .study-card::before,
+.pages-v2 .blog-featured::before,
+.pages-v2 .blog-card::before,
+.pages-v2 .contact-info-card::before,
+.pages-v2 .resume-card::before,
+.pages-v2 .author-bio::before,
+.pages-v2 .article-pullout::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background: radial-gradient(120% 80% at 88% -12%, rgba(0,110,245,0.12), rgba(0,110,245,0) 52%);
+  opacity: 0; transition: opacity var(--duration-base) var(--ease-standard);
+}
+.pages-v2 .edu-feature:hover::before,
+.pages-v2 .study-card:hover::before,
+.pages-v2 .blog-featured:hover::before,
+.pages-v2 .blog-card:hover::before,
+.pages-v2 .contact-info-card:hover::before,
+.pages-v2 .resume-card:hover::before,
+.pages-v2 .author-bio:hover::before,
+.pages-v2 .article-pullout:hover::before { opacity: 1; }
+
+/* keep content above the corner-light layer */
+.pages-v2 .edu-feature > *,
+.pages-v2 .study-card > *,
+.pages-v2 .blog-featured > *,
+.pages-v2 .blog-card > *,
+.pages-v2 .contact-info-card > *,
+.pages-v2 .resume-card > *,
+.pages-v2 .author-bio > *,
+.pages-v2 .article-pullout > * { position: relative; z-index: 1; }
+
+/* ...but the available-card's status badge is pinned to the corner —
+   the blanket `> *` rule above must not knock it into normal flow,
+   or it collides with the heading. Restore its absolute placement. */
+.pages-v2 .available-card .available-status { position: absolute; z-index: 2; }
+
+/* ============================================================
+   RICHER HOVER — lift · accent border · soft shadow
+   ============================================================ */
+.pages-v2 .blog-featured,
+.pages-v2 .edu-feature,
+.pages-v2 .study-card,
+.pages-v2 .contact-info-card,
+.pages-v2 .resume-card,
+.pages-v2 .author-bio,
+.pages-v2 .article-pullout {
+  transition: transform var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard),
+              background-color var(--duration-base) var(--ease-standard),
+              box-shadow var(--duration-base) var(--ease-standard);
+}
+.pages-v2 .blog-card:hover,
+.pages-v2 .blog-featured:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-strong);
+  box-shadow: 0 16px 44px rgba(0,14,31,0.5);
+}
+.pages-v2 .edu-feature:hover,
+.pages-v2 .study-card:hover,
+.pages-v2 .bento-tile:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: 0 14px 38px rgba(0,14,31,0.45);
+}
+.pages-v2 .contact-info-card:hover,
+.pages-v2 .resume-card:hover,
+.pages-v2 .author-bio:hover,
+.pages-v2 .article-pullout:hover { border-color: var(--border); }
+
+/* placeholder glyph scales on hover (parity with home project cards) */
+.pages-v2 .blog-card .bc-thumb .ph,
+.pages-v2 .blog-featured .bf-thumb .ph {
+  transition: transform var(--duration-slow) var(--ease-emphasized),
+              color var(--duration-base) var(--ease-standard);
+}
+.pages-v2 .blog-card:hover .bc-thumb .ph,
+.pages-v2 .blog-featured:hover .bf-thumb .ph { transform: scale(1.08); }
+
+/* small chips — quiet lift on hover */
+.pages-v2 .tool-chip,
+.pages-v2 .cert-item {
+  transition: transform var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard),
+              background-color var(--duration-base) var(--ease-standard);
+}
+.pages-v2 .tool-chip:hover,
+.pages-v2 .cert-item:hover { transform: translateY(-2px); border-color: var(--border-strong); }
+
+/* ============================================================
+   LABEL-MONO VOICE — metadata in the technical-label register
+   ============================================================ */
+.pages-v2 .bc-meta,
+.pages-v2 .bf-meta,
+.pages-v2 .cert-label,
+.pages-v2 .tools-cat-label,
+.pages-v2 .skill-group .sg-label,
+.pages-v2 .contact-method .cm-label,
+.pages-v2 .resume-job .rj-date,
+.pages-v2 .resume-edu-item .ei-date,
+.pages-v2 .cert-item .ci-year {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+.pages-v2 .article-meta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+/* the byline stays human — only the surrounding meta goes mono */
+.pages-v2 .article-meta .author {
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: 0.1px;
+  font-size: 14px;
+}
