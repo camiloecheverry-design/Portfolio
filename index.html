@@ -26,7 +26,6 @@
   <link rel="preload" href="assets/css/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="assets/css/colors_and_type.css" />
   <link rel="stylesheet" href="assets/css/site.css" />
-  <link rel="stylesheet" href="assets/css/home.css" />
   <script>
     document.documentElement.classList.add("fonts-loading");
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
@@ -57,7 +56,7 @@
   }
   </script>
 </head>
-<body class="home-v2">
+<body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ============ NAVBAR ============ -->
@@ -110,15 +109,8 @@
     <!-- ============ HERO ============ -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container-wide">
-        <div class="bento-hero">
-
-          <!-- Headline panel -->
-          <div class="bento-headline">
-            <!-- Ghost pills (parallax decorations) -->
-            <span class="ghost-pill" data-parallax="0.10" style="width:120px;height:36px;bottom:32px;right:40px;"></span>
-            <span class="ghost-pill" data-parallax="0.18" style="width:72px;height:72px;border-radius:50%;top:40px;right:80px;"></span>
-            <span class="ghost-pill" data-parallax="0.08" style="width:180px;height:40px;bottom:80px;right:-20px;"></span>
-
+        <div class="hero-grid">
+          <div class="hero-copy">
             <span class="hero-availability"><span class="pulse"></span> Available for new projects</span>
             <h1 id="hero-title">I design products that <span class="accent">convert, scale, and ship.</span></h1>
             <p class="lead">I love working with ambiguous briefs to turn them into structured, data-backed decisions. Three years of owning end-to-end flows for teams across international clients back up my work.</p>
@@ -126,39 +118,25 @@
               <a class="btn btn-primary btn-lg" href="#work">View selected work</a>
               <a class="btn btn-secondary btn-lg" href="contact.html">Let's talk <i data-lucide="arrow-right" class="icon-sm"></i></a>
             </div>
-          </div>
-
-          <!-- Portrait card -->
-          <div class="bento-portrait-card reveal">
-            <span class="portrait-badge">UX/UI · Product Design</span>
-            <image-slot id="hero-portrait" shape="rect" fit="cover" placeholder="Drop your portrait"></image-slot>
-            <div class="portrait-scrim"></div>
-            <div class="portrait-cap">
-              <i data-lucide="map-pin" class="icon-sm"></i>
-              <span>Cali, Colombia · Remote worldwide</span>
+            <div class="hero-proof" data-hero-stats>
+              <div class="stat"><div class="n">3+</div><div class="l">Years shipping<br />real products</div></div>
+              <div class="stat"><div class="n">5+</div><div class="l">Products taken<br />from 0 to launch</div></div>
+              <div class="stat"><div class="n">4</div><div class="l">Countries of<br />client work</div></div>
+              <div class="stat"><div class="n">−20%</div><div class="l">Error rate on a<br />redesigned flow</div></div>
             </div>
           </div>
-
-          <!-- Stat pills -->
-          <div class="bento-stats" data-hero-stats>
-            <div class="stat-pill accent">
-              <div class="n" data-count="3" data-suffix="+">3+</div>
-              <div class="l">Years shipping real products</div>
-            </div>
-            <div class="stat-pill">
-              <div class="n" data-count="5" data-suffix="+">5+</div>
-              <div class="l">Products from 0 to launch</div>
-            </div>
-            <div class="stat-pill">
-              <div class="n" data-count="4">4</div>
-              <div class="l">Countries of client work</div>
-            </div>
-            <div class="stat-pill">
-              <div class="n" data-count="20" data-prefix="−" data-suffix="%">−20%</div>
-              <div class="l">Error rate on redesigned flow</div>
+          <div class="hero-visual reveal">
+            <div class="hero-portrait">
+              <span class="hero-portrait-badge">UX/UI · Product Design</span>
+              <image-slot id="hero-portrait" shape="rect" fit="cover" placeholder="Drop your portrait"></image-slot>
+              <div class="scrim"></div>
+              <div class="hero-portrait-cap">
+                <span class="loc"><i data-lucide="map-pin" class="icon-sm"></i> Cali, Colombia</span>
+                <span aria-hidden="true">·</span>
+                <span>Remote worldwide</span>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -182,12 +160,9 @@
         <div class="about-split">
           <div class="about-portrait reveal">
             <image-slot id="about-portrait" shape="rect" fit="cover" placeholder="Drop a working photo"></image-slot>
-            <span class="about-portrait-badge">Behind the work</span>
-            <div class="about-portrait-scrim"></div>
-            <span class="about-portrait-loc"><i data-lucide="map-pin" class="icon-sm"></i> Cali, Colombia</span>
           </div>
           <div class="about-text reveal">
-            <div class="barbell-eyebrow"><span class="eb-label">Who am I hiring?</span><span class="eb-connector"></span><span class="eb-index">01</span></div>
+            <span class="eyebrow"><span class="dot"></span> <span class="idx">01</span> &nbsp;Who am I hiring?</span>
             <h2 id="about-title" class="about-lead">I make the <span class="accent">complex feel obvious</span>, and back every decision with research and data.</h2>
             <div class="about-body">
               <p>I'm a product designer who's comfortable in the messy middle: undefined problems, competing stakeholders, real technical constraints. My job is to translate that ambiguity into structured, scalable design that teams can actually build and users actually understand.</p>
@@ -212,13 +187,13 @@
     <section class="section band" id="experience" aria-labelledby="exp-title">
       <div class="container">
         <div class="section-head reveal">
-          <div class="barbell-eyebrow"><span class="eb-label">Where has he worked?</span><span class="eb-connector"></span><span class="eb-index">02</span></div>
+          <span class="eyebrow"><span class="dot"></span> <span class="idx">02</span> &nbsp;Where has he worked?</span>
           <h2 id="exp-title">More than three years, delivering real products.</h2>
           <p>A track record of owning the full design lifecycle alongside product, engineering, and data. Not just handing off screens.</p>
         </div>
         <div class="exp-list">
           <article class="exp-item reveal">
-            <div class="exp-period"><span class="yr">2025</span>Jun — Dec 2025</div>
+            <div class="exp-period"><span class="yr">2025</span>Jun – Dec 2025</div>
             <div class="exp-main">
               <h3>Product Designer</h3>
               <div class="co">Balto <span class="sep">·</span> <span class="place">Remote</span></div>
@@ -233,7 +208,7 @@
           </article>
 
           <article class="exp-item reveal">
-            <div class="exp-period"><span class="yr">2023</span>May 2023 — Jun 2025</div>
+            <div class="exp-period"><span class="yr">2023</span>May 2023 – Jun 2025</div>
             <div class="exp-main">
               <h3>UX/UI Designer</h3>
               <div class="co">Makata Studio <span class="sep">·</span> <span class="place">Colombia</span></div>
@@ -248,7 +223,7 @@
           </article>
 
           <article class="exp-item reveal">
-            <div class="exp-period"><span class="yr">2022</span>May 2022 — Feb 2023</div>
+            <div class="exp-period"><span class="yr">2022</span>May 2022 – Feb 2023</div>
             <div class="exp-main">
               <h3>UX Customer Journey Specialist</h3>
               <div class="co">Adecco Colombia <span class="sep">·</span> <span class="place">Colombia</span></div>
@@ -263,7 +238,7 @@
           </article>
 
           <article class="exp-item reveal">
-            <div class="exp-period"><span class="yr">2021</span>Sep 2021 — Mar 2022</div>
+            <div class="exp-period"><span class="yr">2021</span>Sep 2021 – Mar 2022</div>
             <div class="exp-main">
               <h3>Design Intern</h3>
               <div class="co">Inorca Seating <span class="sep">·</span> <span class="place">Cali, Colombia</span></div>
@@ -287,7 +262,7 @@
     <section class="section" id="work" aria-labelledby="work-title">
       <div class="container">
         <div class="section-head reveal">
-          <div class="barbell-eyebrow"><span class="eb-label">What has he done?</span><span class="eb-connector"></span><span class="eb-index">03</span></div>
+          <span class="eyebrow"><span class="dot"></span> <span class="idx">03</span> &nbsp;What has he done?</span>
           <h2 id="work-title">Selected work that shipped and moved the numbers.</h2>
           <p>A few flows I owned end-to-end. Open any one for the problem, my role, and the outcome.</p>
         </div>
@@ -359,7 +334,7 @@
     <section class="section band" id="services" aria-labelledby="services-title">
       <div class="container">
         <div class="section-head reveal">
-          <div class="barbell-eyebrow"><span class="eb-label">What does he bring?</span><span class="eb-connector"></span><span class="eb-index">04</span></div>
+          <span class="eyebrow"><span class="dot"></span> <span class="idx">04</span> &nbsp;What does he bring to the table?</span>
           <h2 id="services-title">What I'll own when you bring me in.</h2>
           <p>Not just screens; the thinking, the system, and the proof behind every decision.</p>
         </div>
@@ -409,7 +384,7 @@
       <div class="container">
         <div class="contact-split">
           <div class="contact-pitch reveal">
-            <div class="barbell-eyebrow"><span class="eb-label">Where can I contact him?</span><span class="eb-connector"></span><span class="eb-index">05</span></div>
+            <span class="eyebrow"><span class="dot"></span> <span class="idx">05</span> &nbsp;Where can I contact him?</span>
             <h2 id="contact-title">Think I'm the designer you needed? <span class="accent">Let's make it official.</span></h2>
             <p>Tell me about the product, the problem, or the role. I reply to every serious message, usually within a day.</p>
             <div class="contact-points">
@@ -535,8 +510,6 @@
   <script src="assets/js/image-slot.js"></script>
   <!-- shared interactions -->
   <script src="assets/js/site.js"></script>
-  <!-- homepage-only motion (count-up + ghost pill parallax) -->
-  <script src="assets/js/home-motion.js"></script>
 
   <!-- Tweaks island (controls projects layout + motion) -->
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
