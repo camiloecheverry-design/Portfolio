@@ -154,7 +154,6 @@ a { color: inherit; }
 .btn-primary { background: var(--primary); color: var(--on-primary); }
 .btn-primary:hover { background: var(--primary-hover); }
 .btn-primary:active { background: var(--primary-active); }
-.btn-primary:disabled { background: var(--surface-raised); color: var(--disabled); cursor: not-allowed; }
 .btn-secondary { background: transparent; color: var(--ink); border-color: var(--border); }
 .btn-secondary:hover { background: var(--surface-card); border-color: var(--border-strong); }
 .btn-ghost { background: transparent; color: var(--body); padding-left: 8px; padding-right: 8px; }
@@ -163,6 +162,11 @@ a { color: inherit; }
 .btn-ghost:hover .arrow { transform: translateX(4px); }
 .btn-lg { padding: 17px 30px; font-size: 15px; }
 .btn-full { width: 100%; }
+/* Disabled — native :disabled + .is-disabled for non-button elements */
+.btn:disabled, .btn.is-disabled { cursor: not-allowed; pointer-events: none; }
+.btn-primary:disabled, .btn-primary.is-disabled { background: var(--surface-disabled); color: var(--on-disabled); }
+.btn-secondary:disabled, .btn-secondary.is-disabled { background: transparent; color: var(--disabled); border-color: var(--hairline); }
+.btn-ghost:disabled, .btn-ghost.is-disabled { background: transparent; color: var(--disabled); }
 
 /* inline text link */
 .link-inline {
@@ -438,8 +442,8 @@ a { color: inherit; }
   transition: background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
 }
 .icon-btn:hover { background: var(--surface-raised); color: var(--ink); }
-.icon-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .icon-btn:focus-visible { outline: none; box-shadow: var(--shadow-focus-ring); }
+.icon-btn:disabled, .icon-btn.is-disabled { color: var(--disabled); border-color: var(--hairline); cursor: not-allowed; pointer-events: none; }
 
 /* badges + tags */
 .badge {
@@ -547,6 +551,8 @@ select.input:hover { border-color: var(--border-strong); }
 .input::placeholder, .textarea::placeholder { color: var(--muted); }
 .input:focus, .textarea:focus, select.input:focus { outline: none; border-color: var(--focus-ring); box-shadow: var(--shadow-focus-ring); }
 .input.invalid, .textarea.invalid { border-color: var(--error); }
+.input:disabled, .textarea:disabled { background: var(--canvas); color: var(--disabled); border-color: var(--hairline); cursor: not-allowed; resize: none; }
+.input:disabled::placeholder, .textarea:disabled::placeholder { color: var(--disabled); }
 .textarea { resize: vertical; min-height: 140px; line-height: 1.55; }
 .field-error { color: var(--error); font-size: 13px; margin-top: 8px; display: none; }
 .field-error.show { display: block; }

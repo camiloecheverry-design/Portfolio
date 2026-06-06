@@ -50,6 +50,8 @@ body { opacity: 1; transition: opacity 0.2s ease; }
   --canvas: #000E1F;
   --surface-card: #001229;
   --surface-raised: #002552;
+  --surface-disabled: #2B3848;   /* desaturated slate-blue — inert fill for disabled controls */
+  --on-disabled: #8493A6;        /* muted slate label on disabled fill */
 
   /* --- Text --- */
   --ink: #FFFFFF;
