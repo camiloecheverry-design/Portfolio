@@ -1,0 +1,240 @@
+/* ============================================================
+   Camilo Echeverry Portfolio — Design System
+   colors_and_type.css  ·  V.Alpha
+   Dark navy canvas · single electric-blue accent · Outfit + Inter
+   ============================================================ */
+
+/* ---- Fonts ----
+   Self-hosted in fonts/. Two tiers, both required:
+   1. Variable .ttf (full 100–900 weight axis) — the installable / export-ready
+      master (PPTX, Canva, PDF, system install). Declared first.
+   2. Static latin-subset .woff2 per weight — small & fast for on-screen web
+      rendering. Declared after so the browser prefers them for matching weights.
+   Paths resolve relative to THIS stylesheet, so they work from preview/ and
+   ui_kits/ alike. No network needed — the system renders fully offline. */
+
+/* Fast static web faces */
+@font-face { font-family: 'Outfit'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/outfit-400.woff2') format('woff2'); }
+@font-face { font-family: 'Outfit'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/outfit-500.woff2') format('woff2'); }
+@font-face { font-family: 'Outfit'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/outfit-600.woff2') format('woff2'); }
+@font-face { font-family: 'Outfit'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/outfit-700.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/inter-400.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/inter-500.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/inter-600.woff2') format('woff2'); }
+
+/* ---- Anti-FOUT ----
+   A tiny inline script in each page's <head> adds .fonts-loading to <html>
+   immediately, then removes it once document.fonts.ready resolves (with a
+   1.5s safety timeout). This hides the page for the brief moment before the
+   web fonts are ready, so text never "jumps" from a fallback face to Outfit/
+   Inter. No JS = no class added = content shows normally. */
+html.fonts-loading body { opacity: 0; }
+body { opacity: 1; transition: opacity 0.2s ease; }
+
+:root {
+  /* ============ BASE TOKENS ============ */
+
+  /* --- Brand & Accent --- */
+  --primary: #006EF5;
+  --primary-hover: #005CCC;
+  --primary-active: #0049A3;
+  --primary-subtle: #002552;
+  --on-primary: #FFFFFF;
+
+  /* Accent tints */
+  --accent-100: #EBF4FF;
+  --accent-200: #C2DDFF;
+  --accent-300: #99C7FF;
+
+  /* --- Surfaces (dark, stepped) --- */
+  --canvas: #000E1F;
+  --surface-card: #001229;
+  --surface-raised: #002552;
+
+  /* --- Text --- */
+  --ink: #FFFFFF;
+  --body: #C2DDFF;
+  --muted: #7E96B5;
+  --disabled: #4A5C75;
+  --on-accent-subtle: #EBF4FF;
+
+  /* --- Borders & Hairlines --- */
+  --hairline: #0A2547;
+  --border: #1A3A66;
+  --border-strong: #0049A3;
+  --focus-ring: #99C7FF;
+
+  /* --- Neutral scale --- */
+  --white: #FFFFFF;
+  --gray-100: #E6ECF3;
+  --gray-300: #A7B4C4;
+  --gray-500: #6B7A8D;
+  --gray-700: #33414F;
+  --black: #000000;
+
+  /* --- Semantic --- */
+  --success: #1FB57A;
+  --on-success: #FFFFFF;
+  --warning: #F5A623;
+  --on-warning: #001229;
+  --error: #F25555;
+  --on-error: #FFFFFF;
+  --info: #006EF5;
+  --on-info: #FFFFFF;
+
+  /* ============ TYPE FAMILIES ============ */
+  --font-display: 'Outfit', sans-serif;   /* all display + heading roles */
+  --font-body: 'Inter', sans-serif;       /* all body, labels, captions  */
+
+  /* ============ RADII ============ */
+  --rounded-none: 0px;
+  --rounded-sm: 12px;
+  --rounded-md: 16px;
+  --rounded-lg: 24px;
+  --rounded-xl: 32px;
+  --rounded-full: 9999px;
+
+  /* ============ SPACING (strict 8pt grid) ============ */
+  --space-micro: 4px;   /* icon gaps, border widths — only sub-8 value */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-base: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-section: 128px;
+
+  /* ============ MOTION ============ */
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --duration-reveal: 600ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ============ SHADOWS (only these three) ============ */
+  --shadow-card-hover: 0px 8px 24px rgba(0, 14, 31, 0.4);
+  --shadow-overlay: 0px 16px 48px rgba(0, 14, 31, 0.6);
+  --shadow-focus-ring: 0 0 0 2px var(--canvas), 0 0 0 4px var(--focus-ring);
+
+  /* ============ ICON ============ */
+  --icon-size-sm: 16px;
+  --icon-size-md: 20px;
+  --icon-size-lg: 24px;
+  --icon-size-xl: 32px;
+  --icon-stroke: 1.5px;
+}
+
+/* ============================================================
+   SEMANTIC TYPOGRAPHY
+   Apply these classes directly, or copy the property blocks.
+   ============================================================ */
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -1.6px;
+}
+.display-md {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+}
+.display-sm {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+}
+.heading-lg {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+}
+.heading-sm {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+}
+.body-lg {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+.body-md {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+.body-sm {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.label-lg {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.1px;
+}
+.label-sm {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.4px;
+}
+.caption {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+}
+
+/* Map raw HTML tags to roles, for quick prototyping.
+   (Use the utility classes above when you need precision.) */
+h1 { font-family: var(--font-display); font-size: 64px; font-weight: 600; line-height: 1.05; letter-spacing: -1.6px; }
+h2 { font-family: var(--font-display); font-size: 48px; font-weight: 600; line-height: 1.1; letter-spacing: -1.2px; }
+h3 { font-family: var(--font-display); font-size: 32px; font-weight: 600; line-height: 1.15; letter-spacing: -0.8px; }
+h4 { font-family: var(--font-display); font-size: 24px; font-weight: 600; line-height: 1.25; letter-spacing: -0.4px; }
+h5 { font-family: var(--font-display); font-size: 20px; font-weight: 500; line-height: 1.3; letter-spacing: -0.2px; }
+p  { font-family: var(--font-body); font-size: 16px; font-weight: 400; line-height: 1.55; }
+small { font-family: var(--font-body); font-size: 12px; line-height: 1.4; letter-spacing: 0.2px; }
+code, pre { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+
+a.link-inline {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--duration-instant) var(--ease-standard);
+}
+a.link-inline:hover { color: var(--primary-hover); text-decoration: underline; }
+
+/* Reduced motion — accessibility requirement, not optional */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

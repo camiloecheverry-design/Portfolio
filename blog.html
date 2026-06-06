@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog, Juan Camilo Echeverry on UX, product design &amp; AI</title>
+  <meta name="description" content="Notes from Juan Camilo Echeverry on UX/UI and product design, trends, design systems, conversion, research workflow, and updates from my own projects." />
+  <link rel="canonical" href="https://www.camiloecheverry.com/blog.html" />
+  <meta name="author" content="Juan Camilo Echeverry Marmolejo" />
+  <meta name="theme-color" content="#000E1F" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog, Juan Camilo Echeverry on UX, product design &amp; AI" />
+  <meta property="og:description" content="Commentary on UX/UI and product design trends, plus updates from my own projects." />
+  <meta property="og:image" content="https://www.camiloecheverry.com/assets/img/og-blog.png" />
+  <meta property="og:url" content="https://www.camiloecheverry.com/blog.html" />
+  <meta property="og:site_name" content="Juan Camilo Echeverry" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.camiloecheverry.com/assets/img/og-blog.png" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="preload" href="assets/css/fonts/outfit-600.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/css/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/css/colors_and_type.css" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <script>
+    document.documentElement.classList.add("fonts-loading");
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
+      document.documentElement.classList.remove("fonts-loading");
+    });
+    setTimeout(function () { document.documentElement.classList.remove("fonts-loading"); }, 1500);
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Juan Camilo Echeverry, Blog",
+    "url": "https://www.camiloecheverry.com/blog.html",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverry Marmolejo",
+      "url": "https://www.camiloecheverry.com/",
+      "sameAs": ["https://www.linkedin.com/in/juancamiloecheverry", "https://www.behance.net/Camilo-Echeverry"]
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="navbar">
+    <nav class="nav-inner" aria-label="Primary">
+      <div class="nav-zone-left">
+        <a class="nav-link" data-nav-path="about.html" href="about.html">About</a>
+        <a class="nav-link" data-nav-path="resume.html" href="resume.html">Résumé</a>
+        <a class="nav-link" data-nav-path="blog.html" href="blog.html">Blog</a>
+        <a class="nav-link" data-nav-path="contact.html" href="contact.html">Contact</a>
+      </div>
+      <div class="nav-zone-center">
+        <a class="wordmark" href="index.html" aria-label="Juan Camilo Echeverry, home">Camilo Echeverry<span class="pt">.</span></a>
+      </div>
+      <div class="nav-zone-right">
+        <a class="nav-ext" href="https://www.linkedin.com/in/juancamiloecheverry" target="_blank" rel="noopener"><span>LinkedIn</span><i data-lucide="arrow-up-right"></i></a>
+        <a class="nav-ext" href="https://www.behance.net/Camilo-Echeverry" target="_blank" rel="noopener"><span>Behance</span><i data-lucide="arrow-up-right"></i></a>
+        <span class="tooltip-wrap">
+          <span class="nav-ext disabled" role="link" aria-disabled="true" tabindex="0"><span>GitHub</span><i data-lucide="lock"></i></span>
+          <span class="tooltip" role="tooltip">Coming soon</span>
+        </span>
+      </div>
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false"><i data-lucide="menu"></i></button>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" data-mobile-menu>
+    <a class="nav-link" data-nav-path="about.html" href="about.html">About</a>
+    <a class="nav-link" data-nav-path="resume.html" href="resume.html">Résumé</a>
+    <a class="nav-link" data-nav-path="blog.html" href="blog.html">Blog</a>
+    <a class="nav-link" data-nav-path="contact.html" href="contact.html">Contact</a>
+    <div class="mobile-ext-row">
+      <a class="nav-ext" href="https://www.linkedin.com/in/juancamiloecheverry" target="_blank" rel="noopener"><span>LinkedIn</span><i data-lucide="arrow-up-right"></i></a>
+      <a class="nav-ext" href="https://www.behance.net/Camilo-Echeverry" target="_blank" rel="noopener"><span>Behance</span><i data-lucide="arrow-up-right"></i></a>
+      <span class="nav-ext disabled" aria-disabled="true"><span>GitHub, soon</span><i data-lucide="lock"></i></span>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow"><span class="dot"></span> Blog</span>
+        <h1>Notes on design, <span class="accent">data, and shipping.</span></h1>
+        <p class="lead">Where I think out loud about UX trends, design systems, conversion, and the projects I'm building. Less hot takes, more hard-won lessons.</p>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <!-- filters -->
+        <div class="blog-filters" data-blog-filters>
+          <button class="filter-chip active" data-filter="all">All posts</button>
+          <button class="filter-chip" data-filter="ai">AI &amp; design</button>
+          <button class="filter-chip" data-filter="systems">Design systems</button>
+          <button class="filter-chip" data-filter="process">Process</button>
+          <button class="filter-chip" data-filter="conversion">Conversion</button>
+          <button class="filter-chip" data-filter="career">Career</button>
+        </div>
+
+        <!-- featured -->
+        <a class="blog-featured reveal" href="article.html" data-category="ai">
+          <div class="bf-thumb"><span class="ph">AI</span></div>
+          <div class="bf-body">
+            <div class="project-meta-row"><span class="badge">Featured · AI &amp; design</span></div>
+            <h2>Designing in the age of AI: where the craft still matters</h2>
+            <p>AI can generate a hundred screens before lunch. That's exactly why judgment, research, and systems thinking are worth more than ever. Here's how I fold AI into my workflow without outsourcing the thinking.</p>
+            <div class="bf-meta">
+              <span>Jun 2, 2026</span><span class="dot" style="width:3px;height:3px;border-radius:50%;background:var(--muted);display:inline-block;"></span><span>8 min read</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- grid -->
+        <div class="blog-grid" data-blog-grid>
+          <a class="blog-card reveal" href="article.html" data-category="process">
+            <div class="bc-thumb"><span class="cat"><span class="badge">Process</span></span><span class="ph">01</span></div>
+            <div class="bc-body">
+              <h3>The subscription merge problem nobody talks about</h3>
+              <p class="bc-excerpt">Two accounts, one user, conflicting states. A look at how I untangled a deceptively gnarly flow, and what edge cases taught me.</p>
+              <div class="bc-meta"><span>May 24, 2026</span><span class="dot"></span><span>6 min read</span></div>
+            </div>
+          </a>
+
+          <a class="blog-card reveal" href="article.html" data-category="systems">
+            <div class="bc-thumb"><span class="cat"><span class="badge">Design systems</span></span><span class="ph">02</span></div>
+            <div class="bc-body">
+              <h3>Why I build design systems before I build screens</h3>
+              <p class="bc-excerpt">Per-screen updates are a tax on every future change. Starting with tokens and components pays it down before the bill arrives.</p>
+              <div class="bc-meta"><span>May 9, 2026</span><span class="dot"></span><span>5 min read</span></div>
+            </div>
+          </a>
+
+          <a class="blog-card reveal" href="article.html" data-category="process">
+            <div class="bc-thumb"><span class="cat"><span class="badge">Process</span></span><span class="ph">03</span></div>
+            <div class="bc-body">
+              <h3>Reading the data before you draw</h3>
+              <p class="bc-excerpt">My research-first workflow: how analytics, journey maps, and a few honest questions reshape a design before it exists.</p>
+              <div class="bc-meta"><span>Apr 21, 2026</span><span class="dot"></span><span>7 min read</span></div>
+            </div>
+          </a>
+
+          <a class="blog-card reveal" href="article.html" data-category="conversion">
+            <div class="bc-thumb"><span class="cat"><span class="badge">Conversion</span></span><span class="ph">04</span></div>
+            <div class="bc-body">
+              <h3>A/B testing taught me to kill my favorite designs</h3>
+              <p class="bc-excerpt">The version I loved lost. The version I doubted converted. A short story about ego, evidence, and letting users decide.</p>
+              <div class="bc-meta"><span>Apr 3, 2026</span><span class="dot"></span><span>4 min read</span></div>
+            </div>
+          </a>
+
+          <a class="blog-card reveal" href="article.html" data-category="career">
+            <div class="bc-thumb"><span class="cat"><span class="badge">Career</span></span><span class="ph">05</span></div>
+            <div class="bc-body">
+              <h3>From industrial design to product design</h3>
+              <p class="bc-excerpt">What a degree in physical product design quietly gave me: systems thinking, constraints as fuel, and respect for the user's hands.</p>
+              <div class="bc-meta"><span>Mar 18, 2026</span><span class="dot"></span><span>6 min read</span></div>
+            </div>
+          </a>
+
+          <a class="blog-card reveal" href="article.html" data-category="career">
+            <div class="bc-thumb"><span class="cat"><span class="badge">Practice</span></span><span class="ph">06</span></div>
+            <div class="bc-body">
+              <h3>Shipping for four countries</h3>
+              <p class="bc-excerpt">Designing across the UK, France, Spain, and Canada. Notes on localization, cultural assumptions, and what travels and what doesn't.</p>
+              <div class="bc-meta"><span>Feb 27, 2026</span><span class="dot"></span><span>5 min read</span></div>
+            </div>
+          </a>
+        </div>
+
+        <div class="section-cta center" style="margin-top:64px;">
+          <span class="cta-note">More posts on the way. Follow along on LinkedIn for new writing and project updates.</span>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/juancamiloecheverry" target="_blank" rel="noopener">Follow on LinkedIn <i data-lucide="arrow-up-right" class="icon-sm"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="wordmark" href="index.html">Camilo Echeverry<span class="pt">.</span></a>
+          <p>UX/UI &amp; product designer turning ambiguous briefs into design that converts, scales, and ships.</p>
+          <a class="btn btn-primary" href="contact.html">Start a project <i data-lucide="arrow-right" class="icon-sm"></i></a>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a class="footer-link" href="about.html">About me</a></li>
+            <li><a class="footer-link" href="resume.html">Résumé</a></li>
+            <li><a class="footer-link" href="blog.html">Blog</a></li>
+            <li><a class="footer-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Elsewhere</h4>
+          <ul>
+            <li><a class="footer-link" href="https://www.linkedin.com/in/juancamiloecheverry" target="_blank" rel="noopener">LinkedIn <i data-lucide="arrow-up-right"></i></a></li>
+            <li><a class="footer-link" href="https://www.behance.net/Camilo-Echeverry" target="_blank" rel="noopener">Behance <i data-lucide="arrow-up-right"></i></a></li>
+            <li><span class="footer-link disabled" aria-disabled="true">GitHub, coming soon <i data-lucide="lock"></i></span></li>
+            <li><a class="footer-link" href="mailto:camiloem.1105@gmail.com">Email <i data-lucide="arrow-up-right"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Juan Camilo Echeverry Marmolejo. All rights reserved.</span>
+        <div class="footer-meta">
+          <span><span class="pulse"></span> Available for new projects</span>
+          <span>Cali, Colombia</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script>
+    // Blog category filter
+    (function () {
+      var chips = document.querySelectorAll("[data-blog-filters] .filter-chip");
+      var cards = document.querySelectorAll("[data-blog-grid] .blog-card");
+      var featured = document.querySelector(".blog-featured");
+      chips.forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          chips.forEach(function (c) { c.classList.remove("active"); });
+          chip.classList.add("active");
+          var f = chip.getAttribute("data-filter");
+          cards.forEach(function (card) {
+            var show = f === "all" || card.getAttribute("data-category") === f;
+            card.style.display = show ? "" : "none";
+          });
+          if (featured) {
+            var fShow = f === "all" || featured.getAttribute("data-category") === f;
+            featured.style.display = fShow ? "" : "none";
+          }
+        });
+      });
+    })();
+  </script>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#000E1F"/>
+      <text x="50" y="58" font-family="Outfit, sans-serif" font-size="34" font-weight="600" fill="#FFFFFF" text-anchor="middle">CE<tspan fill="#006EF5">.</tspan></text>
+    </svg>
+  </template>
+</body>
+</html>
