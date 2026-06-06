@@ -199,3 +199,54 @@
   letter-spacing: 0.1px;
   font-size: 14px;
 }
+
+/* ============================================================
+   MOBILE / TOUCH FIXES — inner pages
+   ============================================================ */
+
+/* Allow vertical scroll to pass through tall cards */
+@media (pointer: coarse) {
+  .pages-v2 .edu-feature,
+  .pages-v2 .study-card,
+  .pages-v2 .blog-card,
+  .pages-v2 .blog-featured,
+  .pages-v2 .contact-info-card,
+  .pages-v2 .resume-card,
+  .pages-v2 .bento-tile,
+  .pages-v2 .article-pullout,
+  .pages-v2 .author-bio { touch-action: pan-y; }
+}
+
+/* Strip all hover transforms / shadows / state changes on touch devices */
+@media (hover: none) {
+  /* blog cards */
+  .pages-v2 .blog-card:hover,
+  .pages-v2 .blog-featured:hover              { transform: none; box-shadow: none; border-color: var(--hairline); }
+  .pages-v2 .blog-card:hover .bc-thumb .ph,
+  .pages-v2 .blog-featured:hover .bf-thumb .ph { transform: none; }
+
+  /* about / resume cards */
+  .pages-v2 .edu-feature:hover,
+  .pages-v2 .study-card:hover,
+  .pages-v2 .bento-tile:hover                  { transform: none; box-shadow: none; border-color: var(--hairline); }
+
+  /* info / ancillary cards */
+  .pages-v2 .contact-info-card:hover,
+  .pages-v2 .resume-card:hover,
+  .pages-v2 .author-bio:hover,
+  .pages-v2 .article-pullout:hover             { border-color: var(--hairline); }
+
+  /* corner-light overlay — never show it on touch */
+  .pages-v2 .edu-feature:hover::before,
+  .pages-v2 .study-card:hover::before,
+  .pages-v2 .blog-featured:hover::before,
+  .pages-v2 .blog-card:hover::before,
+  .pages-v2 .contact-info-card:hover::before,
+  .pages-v2 .resume-card:hover::before,
+  .pages-v2 .author-bio:hover::before,
+  .pages-v2 .article-pullout:hover::before     { opacity: 0; }
+
+  /* small chips */
+  .pages-v2 .tool-chip:hover,
+  .pages-v2 .cert-item:hover                   { transform: none; border-color: inherit; }
+}

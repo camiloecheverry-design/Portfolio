@@ -4,7 +4,7 @@
    ============================================================ */
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   margin: 0;
   background: var(--canvas);
@@ -1281,4 +1281,57 @@ select.input:hover { border-color: var(--border-strong); }
 .available-card.btn-stretch .btn { align-self: stretch; }
 @media (max-width: 1080px) {
   .resume-sidebar .available-card { flex: 1 1 280px; }
+}
+
+/* ============================================================
+   MOBILE / TOUCH FIXES
+   ============================================================ */
+
+/* 1. Carousel — lock to horizontal-only panning on touch screens.
+      overscroll-behavior-x: contain stops the horizontal swipe from
+      accidentally triggering the page's vertical scroll chain. */
+@media (pointer: coarse) {
+  .projects-wrap[data-layout="carousel"] .projects-stage {
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+  }
+
+  /* image-slot uses touch-action:none + preventDefault internally for
+     its drag-to-reposition feature. Mobile users can't drop photos,
+     so we disable pointer events entirely — scroll passes through. */
+  image-slot {
+    pointer-events: none;
+    touch-action: pan-y;
+  }
+}
+
+/* 2. Hover states → strip on touch devices.
+      Without this: (a) hover styles stick after a tap, (b) links with
+      :hover CSS require two taps — first tap fires hover, second follows
+      the link. @media (hover: none) matches any device with no mouse. */
+@media (hover: none) {
+  /* Buttons — snap back to their resting appearance on touch */
+  .btn-primary:hover                { background: var(--primary); }
+  .btn-secondary:hover              { background: transparent; border-color: var(--border); }
+  .btn-ghost:hover                  { color: var(--body); }
+  .btn-ghost:hover .arrow           { transform: none; }
+  .btn-lg:hover                     { background: unset; }
+
+  /* Nav */
+  .nav-link:hover                   { color: var(--muted); background: transparent; }
+  .nav-ext:hover                    { color: var(--muted); }
+  .footer-link:hover                { color: var(--muted); text-decoration: none; }
+
+  /* Project cards */
+  .project-card:hover               { transform: none; box-shadow: none; border-color: var(--hairline); }
+  .project-card:hover .project-thumb .ph { transform: none; }
+
+  /* Icon buttons */
+  .icon-btn:hover                   { background: transparent; border-color: var(--border); color: var(--body); }
+
+  /* Logo strip links */
+  .logo-row .co:hover               { color: var(--muted); background: transparent; border-color: var(--hairline); }
+
+  /* Suppress tap highlight flash on all interactive elements */
+  a, button, [role="button"]        { -webkit-tap-highlight-color: transparent; }
 }

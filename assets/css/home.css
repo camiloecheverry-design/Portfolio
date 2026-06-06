@@ -371,3 +371,54 @@
   .home-v2 .eyebrow { font-size: 10.5px; letter-spacing: 0.8px; padding: 6px 12px 6px 6px; }
   .home-v2 .eyebrow .idx { width: 22px; height: 22px; font-size: 11px; }
 }
+
+/* ============================================================
+   MOBILE / TOUCH FIXES — homepage
+   ============================================================ */
+
+/* 1. Clip ghost pills so they never cause horizontal page overflow.
+      The hero-bento ghost pills use negative left/right offsets that
+      can escape the body's overflow-x:hidden on mobile Safari. */
+.home-v2 .hero { overflow: hidden; }
+
+/* 2. Allow vertical scroll to pass through all large bento containers
+      that have overflow:hidden but are not themselves scrollable. */
+@media (pointer: coarse) {
+  .bento-card,
+  .bento-stat,
+  .hero-portrait-card,
+  .home-v2 .about-portrait,
+  .home-v2 .exp-item,
+  .home-v2 .service-card,
+  .home-v2 .contact-card { touch-action: pan-y; }
+}
+
+/* 3. Strip all hover transforms / border / shadow on touch devices. */
+@media (hover: none) {
+  /* stat pills */
+  .bento-stat:hover                             { transform: none; box-shadow: none; border-color: var(--hairline); }
+  .bento-stat.accent:hover                      { box-shadow: none; }
+
+  /* portrait card */
+  .hero-portrait-card:hover                     { border-color: var(--hairline); box-shadow: none; }
+
+  /* project cards */
+  .home-v2 .project-card:hover                  { transform: none; box-shadow: none; border-color: var(--hairline); }
+  .home-v2 .project-card:hover .project-thumb .ph { transform: none; }
+
+  /* service cards */
+  .home-v2 .service-card:hover                  { transform: none; box-shadow: none; border-color: var(--hairline); }
+  .home-v2 .service-card:hover::before          { opacity: 0; }
+  .home-v2 .service-card:hover .service-icon    { transform: none; background: var(--primary-subtle); border-color: var(--border-strong); }
+  .home-v2 .service-card:hover .service-icon [data-lucide] { color: var(--accent-300); }
+
+  /* experience cards */
+  .home-v2 .exp-item:hover                      { transform: none; box-shadow: none; border-color: var(--border); }
+  .home-v2 .exp-item:hover::before              { opacity: 0; }
+
+  /* logo strip chips */
+  .home-v2 .logo-row .co:hover                  { transform: none; color: var(--body); border-color: var(--hairline); background: var(--surface-card); }
+
+  /* contact points */
+  .home-v2 .contact-point:hover                 { transform: none; border-color: var(--hairline); }
+}
