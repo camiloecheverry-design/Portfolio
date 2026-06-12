@@ -102,6 +102,64 @@
         });
         metricsWrap.style.display = (data.metrics && data.metrics.length) ? "" : "none";
       }
+
+      var sysWrap = overlay.querySelector("[data-m-systems]");
+      var sysSection = overlay.querySelector("[data-m-systems-section]");
+      if (sysWrap) {
+        sysWrap.innerHTML = "";
+        (data.systems || []).forEach(function (s) {
+          var row = document.createElement("div");
+          row.className = "sys-row";
+          var linkHtml = s.url
+            ? '<a class="sys-link btn btn-primary" target="_blank" rel="noopener">' +
+              'View on Behance <i data-lucide="arrow-up-right"></i></a>'
+            : '';
+          row.innerHTML = '<div class="sys-head">' +
+                          '<span class="sys-name"></span>' +
+                          '<span class="sys-year"></span></div>' +
+                          '<span class="sys-note"></span>' +
+                          linkHtml;
+          row.querySelector(".sys-name").textContent = s.name;
+          row.querySelector(".sys-note").textContent = s.note;
+          row.querySelector(".sys-year").textContent = s.year;
+          if (s.url) row.querySelector(".sys-link").setAttribute("href", s.url);
+          sysWrap.appendChild(row);
+        });
+        if (sysSection) {
+          sysSection.style.display = (data.systems && data.systems.length) ? "" : "none";
+        }
+      }
+
+      var heroImg = overlay.querySelector("[data-m-hero-img]");
+      var heroPh = overlay.querySelector("[data-m-ph]");
+      var heroWrap = overlay.querySelector(".modal-hero");
+      if (heroImg && heroWrap) {
+        if (data.thumb) {
+          heroImg.setAttribute("src", data.thumb);
+          heroImg.setAttribute("alt", (data.title || "Project") + " cover");
+          heroImg.style.display = "";
+          if (heroPh) heroPh.style.display = "none";
+          heroWrap.classList.add("has-img");
+        } else {
+          heroImg.removeAttribute("src");
+          heroImg.style.display = "none";
+          if (heroPh) heroPh.style.display = "";
+          heroWrap.classList.remove("has-img");
+        }
+      }
+
+      var behanceBtn = overlay.querySelector("[data-m-behance]");
+      if (behanceBtn) {
+        if (data.behance) {
+          behanceBtn.setAttribute("href", data.behance);
+          behanceBtn.style.display = "";
+        } else {
+          behanceBtn.removeAttribute("href");
+          behanceBtn.style.display = "none";
+        }
+      }
+
+      if (window.JCE && window.JCE.initIcons) window.JCE.initIcons();
     }
 
     function open(card) {

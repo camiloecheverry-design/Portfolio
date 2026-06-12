@@ -250,3 +250,52 @@
   .pages-v2 .tool-chip:hover,
   .pages-v2 .cert-item:hover                   { transform: none; border-color: inherit; }
 }
+
+/* ============================================================
+   FEWER BORDERS — inner pages
+   Passes the homepage's border decision through to about / resume /
+   blog / article / contact. Borders survive only where they're
+   functional: the primary clickable cards (blog), image frames, the
+   decorative ghost-pill rings, and form controls. Everything that
+   already has a surface-tier fill to separate it — the eyebrow pill,
+   icon bubbles, chips, stat tiles, band dividers, and the raised /
+   secondary cards — drops its hairline and leans on the surface step.
+   ============================================================ */
+.pages-v2 .eyebrow,
+.pages-v2 .study-icon,
+.pages-v2 .study-card,
+.pages-v2 .edu-feature,
+.pages-v2 .tool-chip,
+.pages-v2 .contact-info-card,
+.pages-v2 .available-card,
+.pages-v2 .resume-card,
+.pages-v2 .author-bio,
+.pages-v2 .article-pullout { border: none; }
+/* bands separate by their lighter surface alone — no edge hairlines */
+.pages-v2 .band { border-top: none; border-bottom: none; }
+
+/* ============================================================
+   NO HOVER on non-interactive elements — inner pages
+   These cards and chips don't link or open anything, so the hover
+   lift / shadow / surface-shift / corner-light is removed. Only the
+   blog cards (real <a> links) keep their hover affordance.
+   ============================================================ */
+.pages-v2 .edu-feature:hover,
+.pages-v2 .contact-info-card:hover,
+.pages-v2 .resume-card:hover,
+.pages-v2 .author-bio:hover,
+.pages-v2 .article-pullout:hover { transform: none; box-shadow: none; }
+/* these also lifted a surface tier on hover — pin it back to rest */
+.pages-v2 .study-card:hover,
+.pages-v2 .tool-chip:hover { transform: none; box-shadow: none; background: var(--surface-card); }
+/* achievements keep their border but stay non-interactive — kill the lift and
+   pin the border-color to each tile's resting value so it doesn't brighten */
+.pages-v2 .bento-tile:hover { transform: none; box-shadow: none; border-color: var(--hairline); }
+.pages-v2 .bento-tile.feature:hover { border-color: var(--border); }
+/* kill the soft corner-light glow on the non-interactive cards */
+.pages-v2 .edu-feature:hover::before,
+.pages-v2 .study-card:hover::before,
+.pages-v2 .contact-info-card:hover::before,
+.pages-v2 .resume-card:hover::before,
+.pages-v2 .author-bio:hover::before,
+.pages-v2 .article-pullout:hover::before { opacity: 0; }

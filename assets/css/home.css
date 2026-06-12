@@ -21,7 +21,7 @@
 /* ============================================================
    HERO — bento mosaic
    ============================================================ */
-.home-v2 .hero { padding: 88px 0 92px; }
+.home-v2 .hero { padding: 88px 0 92px; overflow-x: clip; }
 
 .hero-bento {
   position: relative;
@@ -51,7 +51,6 @@
 .bento-card {
   position: relative;
   background: var(--surface-card);
-  border: 1px solid var(--hairline);
   border-radius: var(--rounded-xl);
   z-index: 1;
   transition: border-color var(--duration-base) var(--ease-standard),
@@ -104,7 +103,7 @@
 .hero-portrait-card .hero-portrait-badge {
   position: absolute; top: 18px; right: 18px; z-index: 3;
   background: rgba(0,14,31,0.7); backdrop-filter: blur(8px);
-  border: 1px solid var(--border); border-radius: var(--rounded-full);
+  border-radius: var(--rounded-full);
   padding: 7px 15px; font-size: 12px; font-weight: 500; color: var(--accent-300);
 }
 .hero-portrait-card .hero-portrait-cap {
@@ -113,7 +112,7 @@
   font-size: 13px; color: var(--body);
 }
 .hero-portrait-card .hero-portrait-cap .loc { display: inline-flex; align-items: center; gap: 6px; }
-.hero-portrait-card:hover { border-color: var(--border); box-shadow: var(--shadow-card-hover); }
+.hero-portrait-card:hover { box-shadow: var(--shadow-card-hover); }
 
 /* stat pills row (the "10x" treatment) */
 .hero-stats-row {
@@ -125,7 +124,6 @@
 .bento-stat {
   position: relative;
   background: var(--surface-card);
-  border: 1px solid var(--hairline);
   border-radius: var(--rounded-lg);
   padding: 22px 26px;
   min-height: 116px;
@@ -142,7 +140,6 @@
 .bento-stat .l { font-size: 13px; line-height: 1.4; color: var(--muted); }
 .bento-stat:hover {
   transform: translateY(-3px);
-  border-color: var(--border);
   box-shadow: var(--shadow-card-hover);
 }
 /* one accent-filled pill for focal pop */
@@ -164,8 +161,7 @@
    ============================================================ */
 .home-v2 .eyebrow {
   position: relative;
-  background: var(--surface-card);
-  border: 1px solid var(--hairline);
+  background: var(--surface-raised);
   border-radius: var(--rounded-full);
   padding: 7px 16px 7px 8px;
   gap: 10px;
@@ -210,12 +206,11 @@
 }
 .home-v2 .service-card:hover {
   transform: translateY(-4px);
-  border-color: var(--border-strong);
   box-shadow: 0 14px 38px rgba(0,14,31,0.5);
 }
 /* circular icon bubble (agent4 soft shapes) */
 .home-v2 .service-icon {
-  width: 56px; height: 56px; border-radius: var(--rounded-full);
+  width: 56px; height: 56px; border-radius: var(--rounded-full); border: none;
   transition: transform var(--duration-base) var(--ease-emphasized), background-color var(--duration-base) var(--ease-standard);
 }
 .home-v2 .service-card:hover .service-icon { transform: translateY(-2px) scale(1.06); background: var(--primary); border-color: var(--primary); }
@@ -224,7 +219,7 @@
 /* deliverables → bordered pill chips */
 .home-v2 .service-card .deliverables { gap: 8px; }
 .home-v2 .service-card .deliverables .d {
-  padding: 6px 14px; border: 1px solid var(--border); border-radius: var(--rounded-full);
+  padding: 6px 14px; border-radius: var(--rounded-full);
   background: var(--surface-card); color: var(--body); font-weight: 500;
 }
 .home-v2 .service-card .deliverables .d::before { display: none; }
@@ -241,7 +236,7 @@
 .home-v2 .about-portrait-badge {
   position: absolute; top: 16px; left: 16px; z-index: 3;
   background: rgba(0,14,31,0.7); backdrop-filter: blur(8px);
-  border: 1px solid var(--border); border-radius: var(--rounded-full);
+  border-radius: var(--rounded-full);
   padding: 7px 15px; font-size: 12px; font-weight: 500; color: var(--accent-300);
 }
 .home-v2 .about-portrait-cap {
@@ -254,7 +249,7 @@
 .home-v2 .exp-list { display: flex; flex-direction: column; gap: 16px; position: relative; }
 .home-v2 .exp-item {
   background: var(--surface-raised);
-  border: 1px solid var(--border);
+  border: none;
   border-radius: var(--rounded-xl);
   padding: 32px;
   margin: 0;
@@ -263,7 +258,7 @@
               border-color var(--duration-base) var(--ease-standard),
               box-shadow var(--duration-base) var(--ease-standard);
 }
-.home-v2 .exp-item:last-child { border-bottom: 1px solid var(--border); }
+.home-v2 .exp-item:last-child { border-bottom: none; }
 .home-v2 .exp-item::before {
   content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
   background: radial-gradient(120% 80% at 12% -10%, rgba(0,110,245,0.12), rgba(0,110,245,0) 50%);
@@ -271,13 +266,13 @@
 }
 .home-v2 .exp-item:hover {
   transform: translateY(-4px);
-  border-color: var(--border-strong);
   box-shadow: 0 16px 44px rgba(0,14,31,0.5);
 }
 .home-v2 .exp-item:hover::before { opacity: 1; }
 .home-v2 .exp-item > * { position: relative; z-index: 1; }
 /* accent the "Most recent" badge */
 .home-v2 .exp-item:first-child .exp-badge .badge { background: var(--primary); color: var(--on-primary); }
+/* period → vertical year + pill-styled range */
 /* period range in the DS mono technical-label voice (the year keeps Outfit) */
 .home-v2 .exp-period { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px; font-size: 12px; }
 .home-v2 .exp-period .yr { font-size: 28px; letter-spacing: -0.6px; color: var(--ink); }
@@ -293,13 +288,13 @@
 .home-v2 .service-card > * { position: relative; z-index: 1; }
 /* services sit on a band — raise them for contrast like the experience cards */
 .home-v2 .band .service-card,
-.home-v2 .band .exp-item { background: var(--surface-raised); border-color: var(--border); }
+.home-v2 .band .exp-item { background: var(--surface-raised); }
 
 /* ---- logo strip → pill chips ---- */
 .home-v2 .logo-row { gap: 14px; }
 .home-v2 .logo-row .co {
   font-size: 17px; padding: 12px 24px;
-  border: 1px solid var(--hairline); border-radius: var(--rounded-full);
+  border-radius: var(--rounded-full);
   background: var(--surface-card); color: var(--body);
   transition: color var(--duration-base) var(--ease-standard),
               transform var(--duration-base) var(--ease-standard),
@@ -308,23 +303,19 @@
 }
 .home-v2 .logo-row .co:hover {
   transform: translateY(-2px); color: var(--ink);
-  border-color: var(--border-strong); background: var(--surface-raised);
+  background: var(--surface-raised);
 }
 
 /* ---- contact points → pill rows + soft light card ---- */
 .home-v2 .contact-card { isolation: isolate; overflow: hidden; }
-.home-v2 .contact-card::before {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
-  background: radial-gradient(110% 70% at 90% -10%, rgba(0,110,245,0.10), rgba(0,110,245,0) 48%);
-}
 .home-v2 .contact-card > * { position: relative; z-index: 1; }
 .home-v2 .contact-point {
-  background: var(--surface-card); border: 1px solid var(--hairline);
+  background: var(--surface-card);
   border-radius: var(--rounded-full); padding: 10px 18px 10px 10px; width: fit-content; max-width: 100%;
-  transition: transform var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard);
+  transition: transform var(--duration-base) var(--ease-standard);
 }
-.home-v2 .contact-point:hover { transform: translateX(4px); border-color: var(--border-strong); }
-.home-v2 .contact-point .ci { border-radius: var(--rounded-full); }
+.home-v2 .contact-point:hover { transform: translateX(4px); }
+.home-v2 .contact-point .ci { border-radius: var(--rounded-full); border: none; }
 
 /* ---- decorative ghost pills in About + Contact ---- */
 .home-v2 #about, .home-v2 #contact { position: relative; overflow: clip; }
@@ -336,6 +327,61 @@
 .home-v2 #about .sgp-1 { width: 300px; height: 120px; top: 56px; right: -96px; }
 .home-v2 #contact .sgp-1 { width: 280px; height: 116px; bottom: 24px; left: -110px; }
 .home-v2 #contact .sgp-2 { width: 150px; height: 150px; top: 40px; right: -70px; }
+
+/* ============================================================
+   FEWER BORDERS — lean on the navy surface tiers, not hairlines
+   (home only — home.css is loaded by index.html alone)
+   Borders now survive only where they ARE the element (outline
+   buttons, inputs, icon-buttons, the modal edge, tooltips) or act
+   as a true structural divider (navbar / footer / cards on canvas).
+   ============================================================ */
+/* bands separate by their lighter surface alone — no edge lines */
+.home-v2 .band { border-top: none; border-bottom: none; }
+/* service cards live on a band as raised tiles — the surface step is the edge */
+.home-v2 .service-card { border: none; }
+/* filled availability pill — the primary-subtle fill defines it */
+.home-v2 .hero-availability { border: none; }
+/* skill chips → quiet recessed fill instead of an outline */
+.home-v2 .tag { border: none; background: var(--surface-card); color: var(--body); }
+/* modal placeholder + metric tiles read off the raised modal surface */
+.modal-hero { border: none; }
+.modal-metric { border: none; background: var(--surface-card); }
+
+/* "More systems" list inside the case-study modal — rule-separated rows
+   (a genuine divider, mirroring the design system's index-list pattern) */
+.modal-systems { display: flex; flex-direction: column; }
+.modal-systems .sys-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px 0;
+  border-top: 1px solid var(--hairline);
+}
+.modal-systems .sys-row:first-child { border-top: none; }
+.modal-systems .sys-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; width: 100%;
+}
+.modal-systems .sys-name {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 16px; color: var(--ink);
+}
+.modal-systems .sys-note {
+  font-size: 14px; line-height: 1.55; color: var(--body); text-wrap: pretty;
+}
+.modal-systems .sys-year {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.4px;
+  color: var(--muted); white-space: nowrap;
+}
+.modal-systems .sys-link.btn {
+  margin-top: 2px;
+  padding: 8px 16px;
+  font-size: 13px;
+  border-radius: var(--rounded-md);
+}
+.modal-systems .sys-link.btn [data-lucide],
+.modal-systems .sys-link.btn svg { width: 15px; height: 15px; }
 
 /* ============================================================
    RESPONSIVE — collapse bento gracefully
@@ -422,3 +468,21 @@
   /* contact points */
   .home-v2 .contact-point:hover                 { transform: none; border-color: var(--hairline); }
 }
+
+/* ============================================================
+   NO HOVER on non-interactive elements — home
+   Stat tiles, the portrait card, the service cards and the
+   experience cards don't link or open anything, so they lose the
+   hover lift / shadow / icon-fill / corner-light. The project cards
+   (which open the case-study modal), the logo links and the contact
+   points (each wraps a real link) keep their hover.
+   ============================================================ */
+.home-v2 .bento-stat:hover { transform: none; box-shadow: none; }
+.home-v2 .bento-stat.accent:hover { box-shadow: none; }
+.home-v2 .hero-portrait-card:hover { box-shadow: none; }
+.home-v2 .service-card:hover { transform: none; box-shadow: none; }
+.home-v2 .service-card:hover::before { opacity: 0; }
+.home-v2 .service-card:hover .service-icon { transform: none; background: var(--primary-subtle); }
+.home-v2 .service-card:hover .service-icon [data-lucide] { color: var(--accent-300); }
+.home-v2 .exp-item:hover { transform: none; box-shadow: none; }
+.home-v2 .exp-item:hover::before { opacity: 0; }

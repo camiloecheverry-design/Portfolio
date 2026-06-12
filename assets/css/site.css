@@ -368,6 +368,12 @@ a { color: inherit; }
   display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
 }
 .project-card:hover .project-thumb { background: var(--primary-subtle); }
+.project-thumb .thumb-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+}
+.project-thumb.has-img .ph { display: none; }
+.project-thumb.has-img .badge { background: rgba(0,14,31,0.72); backdrop-filter: blur(6px); color: var(--ink); }
 .project-thumb .ph {
   font-family: var(--font-display); font-weight: 600; font-size: 44px;
   color: var(--border); letter-spacing: -1px;
@@ -422,13 +428,31 @@ a { color: inherit; }
 .projects-wrap[data-layout="carousel"] .projects-stage {
   display: grid; grid-auto-flow: column; grid-auto-columns: minmax(380px, 420px);
   gap: 28px; overflow-x: auto; scroll-snap-type: x proximity;
-  padding-bottom: 16px; margin: 0 -32px; padding-left: 32px; padding-right: 32px;
+  /* FULL-BLEED carousel: the scroll track breaks out of the container to span
+     the whole viewport (both negative margins = the standard 50%/50vw bleed),
+     while the matching horizontal padding keeps the FIRST card resting at the
+     container's content edge (and the last card ending there). Net effect:
+     cards stay container-aligned at rest but get cut by the SCREEN edges as you
+     scroll. scroll-padding-left makes snap honor that container offset. The
+     vertical padding + negative margin still give the hover lift its room. */
+  padding: 18px calc(50vw - 50%) 24px; margin: -18px calc(50% - 50vw) -24px;
+  /* scroll-padding % resolves against the (now full-viewport) scrollport, so the
+     container offset must be absolute here: 32px until the 1200px cap, then it
+     grows with the centred gutter. (Small screens override to 20px below.) */
+  scroll-padding-left: max(32px, 50vw - 568px);
   scrollbar-width: none;
 }
 .projects-wrap[data-layout="carousel"] .projects-stage::-webkit-scrollbar { display: none; }
 .projects-wrap[data-layout="carousel"] .project-card { scroll-snap-align: start; }
 .projects-wrap[data-layout="carousel"] .carousel-controls {
   display: flex; align-items: center; justify-content: space-between; margin-top: 32px; gap: 16px;
+}
+/* Phone: shrink cards so the next one peeks past the edge — a visual cue that
+   the row scrolls horizontally. */
+@media (max-width: 600px) {
+  .projects-wrap[data-layout="carousel"] .projects-stage {
+    grid-auto-columns: 82%; gap: 16px;
+  }
 }
 
 .carousel-controls { display: none; }
@@ -639,6 +663,8 @@ select.input:hover { border-color: var(--border-strong); }
   margin-bottom: 32px;
 }
 .modal-hero .ph { font-family: var(--font-display); font-weight: 600; font-size: 56px; color: var(--border); }
+.modal-hero .modal-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; border-radius: inherit; }
+.modal-hero.has-img { background: var(--surface-raised); }
 .modal-section { margin-bottom: 28px; }
 .modal-section h4 {
   font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: 0.4px;
@@ -719,6 +745,7 @@ select.input:hover { border-color: var(--border-strong); }
   .section-head h2 { font-size: 34px; letter-spacing: -0.8px; }
   .contact-pitch h2 { font-size: 36px; }
   .projects-wrap[data-layout="grid"] .projects-stage { grid-template-columns: 1fr; }
+  .projects-wrap[data-layout="carousel"] .projects-stage { scroll-padding-left: 20px; }
   .projects-wrap[data-layout="showcase"] .project-card,
   .projects-wrap[data-layout="showcase"] .project-card:nth-child(even) { flex-direction: column; }
   .projects-wrap[data-layout="showcase"] .project-thumb { min-height: 240px; }
