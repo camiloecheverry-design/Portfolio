@@ -456,8 +456,8 @@ a { color: inherit; }
 }
 
 .carousel-controls { display: none; }
-.carousel-progress { flex: 1; height: 2px; background: var(--hairline); border-radius: 2px; overflow: hidden; max-width: 240px; }
-.carousel-progress .bar { height: 100%; background: var(--primary); width: 30%; border-radius: 2px;
+.carousel-progress { flex: 1; height: 2px; background: var(--hairline); border-radius: 2px; overflow: hidden; min-width: 0; margin-right: 8px; }
+.carousel-progress .bar { display: block; height: 100%; background: var(--primary); width: 30%; border-radius: 2px;
   transition: width var(--duration-base) var(--ease-standard), margin-left var(--duration-base) var(--ease-standard); }
 .carousel-arrows { display: flex; gap: 8px; }
 
