@@ -14,13 +14,7 @@
   <link rel="preload" href="assets/css/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="assets/css/colors_and_type.css" />
   <link rel="stylesheet" href="assets/css/site.css" />
-  <script>
-    document.documentElement.classList.add("fonts-loading");
-    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
-      document.documentElement.classList.remove("fonts-loading");
-    });
-    setTimeout(function () { document.documentElement.classList.remove("fonts-loading"); }, 1500);
-  </script>
+  <script src="assets/js/fonts-loading.js"></script>
 
   <style>
     .error-page { padding: 120px 0 96px; }
@@ -167,7 +161,7 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/lucide@1.21.0/dist/umd/lucide.min.js" integrity="sha384-xphWpUp6pRlNpM8BxCtyoW96oteA0kPxUX0VP6V32gICuE4ViDFBfaoyj5BS7M4w" crossorigin="anonymous"></script>
   <script src="assets/js/site.js"></script>
 
   <template id="__bundler_thumbnail">

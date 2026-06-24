@@ -27,13 +27,7 @@
   <link rel="stylesheet" href="assets/css/colors_and_type.css" />
   <link rel="stylesheet" href="assets/css/site.css" />
   <link rel="stylesheet" href="assets/css/home.css" />
-  <script>
-    document.documentElement.classList.add("fonts-loading");
-    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
-      document.documentElement.classList.remove("fonts-loading");
-    });
-    setTimeout(function () { document.documentElement.classList.remove("fonts-loading"); }, 1500);
-  </script>
+  <script src="assets/js/fonts-loading.js"></script>
 
   <!-- Person structured data -->
   <script type="application/ld+json">
@@ -513,6 +507,7 @@
             <li><a class="footer-link" href="resume.html">Résumé</a></li>
             <li><a class="footer-link" href="blog.html">Blog</a></li>
             <li><a class="footer-link" href="contact.html">Contact</a></li>
+            <li><a class="footer-link" href="privacy.html">Privacy</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -536,68 +531,13 @@
   </footer>
 
   <!-- Lucide icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/lucide@1.21.0/dist/umd/lucide.min.js" integrity="sha384-xphWpUp6pRlNpM8BxCtyoW96oteA0kPxUX0VP6V32gICuE4ViDFBfaoyj5BS7M4w" crossorigin="anonymous"></script>
   <!-- image slots -->
   <script src="assets/js/image-slot.js"></script>
   <!-- shared interactions -->
   <script src="assets/js/site.js"></script>
   <!-- homepage-only motion (count-up + ghost pill parallax) -->
   <script src="assets/js/home-motion.js"></script>
-
-  <!-- Tweaks island (controls projects layout + motion) -->
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-  <script type="text/babel" src="assets/js/tweaks-panel.jsx"></script>
-  <script type="text/babel">
-    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-      "projectsLayout": "carousel",
-      "revealMotion": true,
-      "heroStats": true
-    }/*EDITMODE-END*/;
-
-    function HomeTweaks() {
-      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-
-      React.useEffect(() => {
-        const wrap = document.querySelector(".projects-wrap");
-        if (wrap) {
-          wrap.setAttribute("data-layout", t.projectsLayout);
-          window.dispatchEvent(new CustomEvent("layoutchange"));
-          if (window.JCE) window.JCE.initIcons();
-        }
-      }, [t.projectsLayout]);
-
-      React.useEffect(() => {
-        const stats = document.querySelector("[data-hero-stats]");
-        if (stats) stats.style.display = t.heroStats ? "" : "none";
-      }, [t.heroStats]);
-
-      React.useEffect(() => {
-        if (!t.revealMotion) {
-          document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
-        }
-      }, [t.revealMotion]);
-
-      return (
-        <TweaksPanel title="Tweaks">
-          <TweakSection label="Projects section" />
-          <TweakRadio label="Layout" value={t.projectsLayout}
-            options={["grid", "showcase", "carousel"]}
-            onChange={(v) => setTweak("projectsLayout", v)} />
-          <TweakSection label="Display" />
-          <TweakToggle label="Hero stats band" value={t.heroStats}
-            onChange={(v) => setTweak("heroStats", v)} />
-          <TweakToggle label="Reveal motion" value={t.revealMotion}
-            onChange={(v) => setTweak("revealMotion", v)} />
-        </TweaksPanel>
-      );
-    }
-
-    const tweakRoot = document.createElement("div");
-    document.body.appendChild(tweakRoot);
-    ReactDOM.createRoot(tweakRoot).render(<HomeTweaks />);
-  </script>
 
   <!-- thumbnail for bundler -->
   <template id="__bundler_thumbnail">

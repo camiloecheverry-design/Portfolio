@@ -1,0 +1,16 @@
+# Internal docs — not for public hosting
+README.md
+HANDOFF.md
+LICENSE
+*.md
+Design System/
+
+# Editor / build state
+.image-slots.state.json
+assets/js/tweaks-panel.jsx
+
+# Local junk
+.DS_Store
+.claude/
+uploads/
+screenshots/
