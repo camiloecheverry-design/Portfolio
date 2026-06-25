@@ -16,12 +16,20 @@
      The button stays hidden until a challenge is solved; on success the
      captcha disappears and the "Send message" button takes its place.
      Registered on window so hCaptcha's data-callback can reach them. */
+  function formRequiredFilled(form) {
+    var req = Array.prototype.slice.call(
+      form.querySelectorAll(".input[required], .textarea[required]")
+    );
+    return req.every(function (i) { return (i.value || "").trim().length > 0; });
+  }
   function setCaptchaSolved(solved) {
     document.querySelectorAll("[data-contact-form]").forEach(function (form) {
       var cap = form.querySelector(".h-captcha");
       var btn = form.querySelector('[type="submit"]');
       if (cap) cap.hidden = solved;
-      if (btn) { btn.hidden = !solved; btn.disabled = false; }
+      // Button only appears after the captcha; once visible it stays disabled
+      // until every required field is filled.
+      if (btn) { btn.hidden = !solved; btn.disabled = solved && !formRequiredFilled(form); }
     });
     initIcons();
   }
@@ -358,6 +366,9 @@
       input.addEventListener("blur", function () { validateField(field); });
       input.addEventListener("input", function () {
         if (input.classList.contains("invalid")) validateField(field);
+        // Keep the (captcha-revealed) submit button in sync with required fields.
+        var btn = form.querySelector('[type="submit"]');
+        if (btn && !btn.hidden) btn.disabled = !formRequiredFilled(form);
       });
     });
 
