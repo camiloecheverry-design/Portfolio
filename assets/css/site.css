@@ -743,6 +743,19 @@ select.input:hover { border-color: var(--border-strong); }
   opacity: 1; transform: translateX(-50%) translateY(0);
 }
 .is-locked:focus-visible { outline: none; box-shadow: var(--shadow-focus-ring); border-radius: var(--rounded-md); }
+/* In the navbar the tooltip drops below the link so it isn't clipped by
+   the top of the header (footer keeps it above). */
+.nav-link.is-locked::before,
+.mobile-menu .is-locked::before {
+  bottom: auto; top: calc(100% + 8px);
+  transform: translateX(-50%) translateY(-4px);
+}
+.nav-link.is-locked:hover::before,
+.nav-link.is-locked:focus-visible::before,
+.mobile-menu .is-locked:hover::before,
+.mobile-menu .is-locked:focus-visible::before {
+  transform: translateX(-50%) translateY(0);
+}
 .footer-bottom {
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
   padding-top: 32px; border-top: 1px solid var(--hairline);
