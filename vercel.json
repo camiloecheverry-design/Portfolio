@@ -24,7 +24,7 @@
     },
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": ".*\\.vercel\\.app" }],
+      "has": [{ "type": "host", "value": "(?:.*\\.vercel\\.app|test\\.camiloecheverry\\.com)" }],
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
       ]
