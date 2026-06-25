@@ -313,6 +313,13 @@
       errorBox.classList.remove("show");
     }
 
+    // Clear a solved hCaptcha so the next submission has to solve a fresh one.
+    function resetCaptcha() {
+      if (window.hcaptcha && form.querySelector(".h-captcha")) {
+        try { window.hcaptcha.reset(); } catch (e) {}
+      }
+    }
+
     function validateField(field) {
       var input = field.querySelector(".input, .textarea");
       if (!input) return true;
@@ -374,6 +381,13 @@
         return;
       }
 
+      // hCaptcha: when the widget is present, require a solved challenge
+      // before doing anything. Web3Forms verifies the token server-side.
+      if (form.querySelector(".h-captcha") && !data["h-captcha-response"]) {
+        showError("Please complete the captcha below to confirm you're human.");
+        return;
+      }
+
       setButton("Sending…", true);
 
       var keyMissing = !WEB3FORMS_ACCESS_KEY ||
@@ -407,6 +421,7 @@
         name: data.name || "",
         email: data.email || "",
         replyto: data.email || "",
+        "h-captcha-response": data["h-captcha-response"] || "",
         message:
           "From: " + (data.name || "") + " <" + (data.email || "") + ">\n" +
           (data.budget ? "Engagement: " + data.budget + "\n" : "") +
@@ -423,6 +438,7 @@
         .then(function (res) {
           if (res && res.success) {
             form.reset();
+            resetCaptcha();
             setButton("Send message", true);
             if (success) success.classList.add("show");
           } else {
@@ -430,6 +446,7 @@
           }
         })
         .catch(function () {
+          resetCaptcha();
           setButton("Send message", false);
           checkRequired();
           showError(
