@@ -133,6 +133,13 @@ a { color: inherit; }
   border-top: 1px solid var(--hairline);
 }
 .mobile-menu.open { display: flex; }
+/* Menu open: freeze the page scroll in place. overflow:hidden on <html> +
+   <body> holds the current position without collapsing the document (so no
+   jump and nothing to restore). JS adds a touchmove guard for iOS, which
+   ignores overflow for touch. The frozen body would still let the sticky
+   navbar drift, so re-pin it to the viewport above the menu. */
+html.nav-open, body.nav-open { overflow: hidden; }
+body.nav-open .navbar { position: fixed; top: 0; left: 0; right: 0; }
 .mobile-menu .nav-link { font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--hairline); border-radius: 0; }
 .mobile-menu .nav-link.active::after { display: none; }
 .mobile-menu .nav-link.active { color: var(--primary); }

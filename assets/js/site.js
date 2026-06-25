@@ -41,10 +41,22 @@
     var toggle = document.querySelector("[data-nav-toggle]");
     var menu = document.querySelector("[data-mobile-menu]");
     if (!toggle || !menu) return;
+    // Touch-scroll guard for iOS Safari, which ignores overflow:hidden for
+    // touch gestures. We swallow touchmove while the menu is open, except
+    // inside the menu itself (so a long menu can still scroll).
+    function blockTouch(e) {
+      if (!menu.contains(e.target)) e.preventDefault();
+    }
     function setOpen(open) {
       menu.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      document.body.style.overflow = open ? "hidden" : "";
+      // .nav-open sets overflow:hidden on <html> + <body>, freezing the page
+      // in place (no scroll jump, no restore needed) and re-pinning the
+      // sticky navbar. touchmove guard covers iOS, which ignores overflow.
+      document.documentElement.classList.toggle("nav-open", open);
+      document.body.classList.toggle("nav-open", open);
+      if (open) document.addEventListener("touchmove", blockTouch, { passive: false });
+      else document.removeEventListener("touchmove", blockTouch, { passive: false });
       var icon = toggle.querySelector("[data-lucide]");
       if (icon) {
         icon.setAttribute("data-lucide", open ? "x" : "menu");
