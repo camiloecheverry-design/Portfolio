@@ -60,7 +60,7 @@
       <div class="nav-zone-left">
         <a class="nav-link" data-nav-path="about.html" href="about.html">About</a>
         <a class="nav-link" data-nav-path="resume.html" href="resume.html">Résumé</a>
-        <a class="nav-link" data-nav-path="blog.html" href="blog.html">Blog</a>
+        <span class="nav-link is-locked" data-nav-path="blog.html" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span>
         <a class="nav-link" data-nav-path="contact.html" href="contact.html">Contact</a>
       </div>
       <div class="nav-zone-center">
@@ -85,7 +85,7 @@
   <div class="mobile-menu" data-mobile-menu>
     <a class="nav-link" data-nav-path="about.html" href="about.html">About</a>
     <a class="nav-link" data-nav-path="resume.html" href="resume.html">Résumé</a>
-    <a class="nav-link" data-nav-path="blog.html" href="blog.html">Blog</a>
+    <span class="nav-link is-locked" data-nav-path="blog.html" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span>
     <a class="nav-link" data-nav-path="contact.html" href="contact.html">Contact</a>
     <div class="mobile-ext-row">
       <a class="nav-ext" href="https://www.linkedin.com/in/juancamiloecheverry" target="_blank" rel="noopener"><span>LinkedIn</span><i data-lucide="arrow-up-right"></i></a>
@@ -163,7 +163,6 @@
             <div class="about-portrait-cap"><i data-lucide="map-pin" class="icon-sm"></i> Cali, Colombia · Remote worldwide</div>
           </div>
           <div class="about-text reveal">
-            <span class="eyebrow"><span class="dot"></span> <span class="idx">01</span> &nbsp;Who am I hiring?</span>
             <h2 id="about-title" class="about-lead">I make the <span class="accent">complex feel obvious</span>, and back every decision with research and data.</h2>
             <div class="about-body">
               <p>I'm a product designer who's comfortable in the messy middle: undefined problems, competing stakeholders, real technical constraints. My job is to translate that ambiguity into structured, scalable design that teams can actually build and users actually understand.</p>
@@ -188,7 +187,6 @@
     <section class="section band" id="experience" aria-labelledby="exp-title">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow"><span class="dot"></span> <span class="idx">02</span> &nbsp;Where has he worked?</span>
           <h2 id="exp-title">Four years, delivering real products.</h2>
           <p>I own the full design lifecycle alongside product, engineering, and data, not just hand off screens.</p>
         </div>
@@ -263,7 +261,6 @@
     <section class="section" id="work" aria-labelledby="work-title">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow"><span class="dot"></span> <span class="idx">03</span> &nbsp;What has he done?</span>
           <h2 id="work-title">Selected work that shipped and moved the numbers.</h2>
           <p>A few flows I owned end-to-end. Open any one for the problem, my role, and the outcome.</p>
         </div>
@@ -353,7 +350,6 @@
     <section class="section band" id="services" aria-labelledby="services-title">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow"><span class="dot"></span> <span class="idx">04</span> &nbsp;What does he bring to the table?</span>
           <h2 id="services-title">What I'll own when you bring me in.</h2>
           <p>The thinking, the system, and the proof behind every decision, not just the screens.</p>
         </div>
@@ -405,7 +401,6 @@
       <div class="container">
         <div class="contact-split">
           <div class="contact-pitch reveal">
-            <span class="eyebrow"><span class="dot"></span> <span class="idx">05</span> &nbsp;Where can I contact him?</span>
             <h2 id="contact-title">Think I'm the designer you needed? <span class="accent">Let's make it official.</span></h2>
             <p>Tell me about the product, the problem, or the role. I reply to every serious message, usually within a day.</p>
             <div class="contact-points">
@@ -447,9 +442,9 @@
               <textarea class="textarea" id="message" name="message" placeholder="A few lines on the product, problem, or role…" required></textarea>
               <div class="field-error" role="alert"></div>
             </div>
-            <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-theme="dark"></div>
+            <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-theme="dark" data-callback="onCaptchaPass" data-expired-callback="onCaptchaReset" data-error-callback="onCaptchaReset"></div>
             <div class="form-foot">
-              <button class="btn btn-primary" type="submit" disabled><span>Send message</span></button>
+              <button class="btn btn-primary" type="submit" hidden><span>Send message</span></button>
               <span class="form-note">Or email me directly, whatever's easier.</span>
             </div>
             <div class="form-success" role="status"><i data-lucide="check-circle" class="icon-sm"></i> Thanks, your message is on its way. I'll be in touch shortly.</div>
@@ -506,7 +501,7 @@
           <ul>
             <li><a class="footer-link" href="about.html">About me</a></li>
             <li><a class="footer-link" href="resume.html">Résumé</a></li>
-            <li><a class="footer-link" href="blog.html">Blog</a></li>
+            <li><span class="footer-link is-locked" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span></li>
             <li><a class="footer-link" href="contact.html">Contact</a></li>
             <li><a class="footer-link" href="privacy.html">Privacy</a></li>
           </ul>

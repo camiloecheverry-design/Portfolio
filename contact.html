@@ -51,7 +51,7 @@
       <div class="nav-zone-left">
         <a class="nav-link" data-nav-path="about.html" href="about.html">About</a>
         <a class="nav-link" data-nav-path="resume.html" href="resume.html">Résumé</a>
-        <a class="nav-link" data-nav-path="blog.html" href="blog.html">Blog</a>
+        <span class="nav-link is-locked" data-nav-path="blog.html" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span>
         <a class="nav-link" data-nav-path="contact.html" href="contact.html">Contact</a>
       </div>
       <div class="nav-zone-center">
@@ -69,7 +69,7 @@
   <div class="mobile-menu" data-mobile-menu>
     <a class="nav-link" data-nav-path="about.html" href="about.html">About</a>
     <a class="nav-link" data-nav-path="resume.html" href="resume.html">Résumé</a>
-    <a class="nav-link" data-nav-path="blog.html" href="blog.html">Blog</a>
+    <span class="nav-link is-locked" data-nav-path="blog.html" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span>
     <a class="nav-link" data-nav-path="contact.html" href="contact.html">Contact</a>
     <div class="mobile-ext-row">
       <a class="nav-ext" href="https://www.linkedin.com/in/juancamiloecheverry" target="_blank" rel="noopener"><span>LinkedIn</span><i data-lucide="arrow-up-right"></i></a>
@@ -81,7 +81,6 @@
   <main id="main" class="pages-v2">
     <section class="page-hero">
       <div class="container">
-        <span class="eyebrow"><span class="dot"></span> Contact</span>
         <h1>Let's build something <span class="accent">worth shipping.</span></h1>
         <p class="lead">Whether you've got a product to design, a problem to untangle, or a role to fill, tell me about it. I read every serious message and reply within a day.</p>
       </div>
@@ -176,9 +175,9 @@
               <textarea class="textarea" id="message" name="message" placeholder="Tell me about the product, the problem, or the role…" required></textarea>
               <div class="field-error" role="alert"></div>
             </div>
-            <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-theme="dark"></div>
+            <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-theme="dark" data-callback="onCaptchaPass" data-expired-callback="onCaptchaReset" data-error-callback="onCaptchaReset"></div>
             <div class="form-foot">
-              <button class="btn btn-primary" type="submit" disabled><span>Send message</span></button>
+              <button class="btn btn-primary" type="submit" hidden><span>Send message</span></button>
               <span class="form-note">Or email me directly, whatever's easier.</span>
             </div>
             <div class="form-success" role="status"><i data-lucide="check-circle" class="icon-sm"></i> Thanks, your message is on its way. I'll be in touch shortly.</div>
@@ -201,7 +200,7 @@
           <ul>
             <li><a class="footer-link" href="about.html">About me</a></li>
             <li><a class="footer-link" href="resume.html">Résumé</a></li>
-            <li><a class="footer-link" href="blog.html">Blog</a></li>
+            <li><span class="footer-link is-locked" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span></li>
             <li><a class="footer-link" href="contact.html">Contact</a></li>
             <li><a class="footer-link" href="privacy.html">Privacy</a></li>
           </ul>

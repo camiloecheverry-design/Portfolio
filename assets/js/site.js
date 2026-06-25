@@ -12,6 +12,22 @@
     }
   }
 
+  /* ---- hCaptcha: swap the widget for the submit button ----
+     The button stays hidden until a challenge is solved; on success the
+     captcha disappears and the "Send message" button takes its place.
+     Registered on window so hCaptcha's data-callback can reach them. */
+  function setCaptchaSolved(solved) {
+    document.querySelectorAll("[data-contact-form]").forEach(function (form) {
+      var cap = form.querySelector(".h-captcha");
+      var btn = form.querySelector('[type="submit"]');
+      if (cap) cap.hidden = solved;
+      if (btn) { btn.hidden = !solved; btn.disabled = false; }
+    });
+    initIcons();
+  }
+  window.onCaptchaPass = function () { setCaptchaSolved(true); };
+  window.onCaptchaReset = function () { setCaptchaSolved(false); };
+
   /* ---- Mobile menu ---- */
   function initMobileMenu() {
     var toggle = document.querySelector("[data-nav-toggle]");
@@ -336,25 +352,12 @@
       return ok;
     }
 
-    function checkRequired() {
-      var btn = form.querySelector('[type="submit"]');
-      if (!btn) return;
-      var requiredInputs = Array.prototype.slice.call(
-        form.querySelectorAll(".input[required], .textarea[required]")
-      );
-      var allFilled = requiredInputs.every(function (inp) {
-        return (inp.value || "").trim().length > 0;
-      });
-      btn.disabled = !allFilled;
-    }
-
     form.querySelectorAll(".field").forEach(function (field) {
       var input = field.querySelector(".input, .textarea");
       if (!input) return;
       input.addEventListener("blur", function () { validateField(field); });
       input.addEventListener("input", function () {
         if (input.classList.contains("invalid")) validateField(field);
-        checkRequired();
       });
     });
 
@@ -407,7 +410,9 @@
         window.location.href = mailto;
         window.setTimeout(function () {
           form.reset();
-          setButton("Send message", true);
+          setButton("Send message", false);
+          resetCaptcha();
+          window.onCaptchaReset();
           if (success) success.classList.add("show");
         }, 500);
         return;
@@ -439,7 +444,8 @@
           if (res && res.success) {
             form.reset();
             resetCaptcha();
-            setButton("Send message", true);
+            setButton("Send message", false);
+            window.onCaptchaReset();
             if (success) success.classList.add("show");
           } else {
             throw new Error((res && res.message) || "Submission failed");
@@ -448,7 +454,7 @@
         .catch(function () {
           resetCaptcha();
           setButton("Send message", false);
-          checkRequired();
+          window.onCaptchaReset();
           showError(
             "Something went wrong sending your message. Please email me directly at " +
             '<a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + "</a>."
@@ -469,6 +475,28 @@
     });
   }
 
+  /* ---- 404: show a real "Go back" button only when the visitor reached
+     this page from within the site (same-origin referrer). On a direct hit
+     or an external landing there's nothing useful to go back to, so the
+     button stays hidden and only "Back home" shows. ---- */
+  function initErrorBack() {
+    var back = document.querySelector("[data-error-back]");
+    if (!back) return;
+    var home = document.querySelector("[data-error-home]");
+    var internal = false;
+    try {
+      internal = !!document.referrer &&
+        new URL(document.referrer).origin === location.origin;
+    } catch (e) { internal = false; }
+    if (!internal) return;
+    back.hidden = false;
+    if (home) home.hidden = true;
+    back.addEventListener("click", function (e) {
+      e.preventDefault();
+      history.back();
+    });
+  }
+
   /* ---- Boot ---- */
   function boot() {
     initIcons();
@@ -478,6 +506,7 @@
     initModal();
     initCarousel();
     initForm();
+    initErrorBack();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);

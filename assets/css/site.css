@@ -141,6 +141,9 @@ a { color: inherit; }
 /* ============================================================
    BUTTONS
    ============================================================ */
+/* the [hidden] attribute must win over component display rules (.btn etc.) */
+[hidden] { display: none !important; }
+
 .btn {
   display: inline-flex; align-items: center; gap: 8px; justify-content: center;
   font-family: var(--font-body); font-size: 14px; font-weight: 500; letter-spacing: 0.1px;
@@ -705,6 +708,41 @@ select.input:hover { border-color: var(--border-strong); }
 .footer-link.disabled { color: var(--disabled); cursor: not-allowed; }
 .footer-link:focus-visible { outline: none; box-shadow: var(--shadow-focus-ring); border-radius: var(--rounded-sm); }
 .footer-link [data-lucide] { width: 16px; height: 16px; transition: color var(--duration-instant) var(--ease-standard); }
+
+/* ============================================================
+   LOCKED NAV / FOOTER LINK — disabled state + "coming soon" tooltip
+   ============================================================ */
+.is-locked {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--disabled) !important;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+.is-locked:hover { color: var(--disabled) !important; }
+.is-locked.active::after { display: none; }            /* kill nav active underline */
+.is-locked [data-lucide] {
+  width: 14px; height: 14px; color: var(--disabled) !important;
+}
+/* tooltip */
+.is-locked::before {
+  content: attr(data-tooltip);
+  position: absolute; bottom: calc(100% + 8px); left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--ink); color: var(--canvas);
+  font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.1px;
+  white-space: nowrap; padding: 5px 9px; border-radius: var(--rounded-sm);
+  box-shadow: var(--shadow-overlay);
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--duration-instant) var(--ease-standard),
+              transform var(--duration-instant) var(--ease-standard);
+  z-index: 20;
+}
+.is-locked:hover::before,
+.is-locked:focus-visible::before {
+  opacity: 1; transform: translateX(-50%) translateY(0);
+}
+.is-locked:focus-visible { outline: none; box-shadow: var(--shadow-focus-ring); border-radius: var(--rounded-md); }
 .footer-bottom {
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
   padding-top: 32px; border-top: 1px solid var(--hairline);
