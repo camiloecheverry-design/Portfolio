@@ -508,6 +508,23 @@
     });
   }
 
+  /* ---- In-page anchor links: smooth-scroll, then strip the #hash from
+     the URL so it doesn't linger (e.g. "View selected work" -> #work). ---- */
+  function initHashScroll() {
+    var rm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      var id = a.getAttribute("href");
+      if (!id || id === "#" || a.classList.contains("skip-link")) return;
+      a.addEventListener("click", function (e) {
+        var target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: rm ? "auto" : "smooth", block: "start" });
+        history.replaceState(null, "", location.pathname + location.search);
+      });
+    });
+  }
+
   /* ---- Boot ---- */
   function boot() {
     initIcons();
@@ -518,6 +535,7 @@
     initCarousel();
     initForm();
     initErrorBack();
+    initHashScroll();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
