@@ -5,8 +5,9 @@ LICENSE
 *.md
 Design System/
 
-# Editor / build state
+# Editor / build state (dev-only image-drop tool, not used in production)
 .image-slots.state.json
+assets/js/image-slot.js
 assets/js/tweaks-panel.jsx
 
 # Local junk
