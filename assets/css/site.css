@@ -1367,12 +1367,15 @@ select.input:hover { border-color: var(--border-strong); }
    MOBILE / TOUCH FIXES
    ============================================================ */
 
-/* 1. Carousel — lock to horizontal-only panning on touch screens.
+/* 1. Carousel — allow BOTH axes so a vertical drag inside the track still
+      scrolls the page; the browser disambiguates by the gesture's initial
+      angle (horizontal → carousel, vertical → page). pan-x alone blocked
+      all vertical touch, trapping page scroll inside the carousel.
       overscroll-behavior-x: contain stops the horizontal swipe from
       accidentally triggering the page's vertical scroll chain. */
 @media (pointer: coarse) {
   .projects-wrap[data-layout="carousel"] .projects-stage {
-    touch-action: pan-x;
+    touch-action: pan-x pan-y;
     overscroll-behavior-x: contain;
   }
 
@@ -1405,6 +1408,10 @@ select.input:hover { border-color: var(--border-strong); }
   /* Project cards */
   .project-card:hover               { transform: none; box-shadow: none; border-color: var(--hairline); }
   .project-card:hover .project-thumb .ph { transform: none; }
+  /* Sticky-hover suppression: on touch the finger resting on a card fires
+     :hover, surfacing the "View case study" pill. Keep it hidden so there's
+     no hover affordance on mobile. */
+  .project-card:hover .view-pill    { opacity: 0; transform: translateY(6px); }
 
   /* Icon buttons */
   .icon-btn:hover                   { background: transparent; border-color: var(--border); color: var(--body); }
