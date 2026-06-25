@@ -806,7 +806,10 @@ select.input:hover { border-color: var(--border-strong); }
   .services-grid { grid-template-columns: 1fr; }
   .exp-item { grid-template-columns: 1fr; gap: 12px; }
   .exp-badge { justify-self: start; }
-  .form-row { grid-template-columns: 1fr; }
+  /* Stacked: drop the row gap so spacing comes only from each .field's
+     margin-bottom (20px), matching the gap between every other field.
+     Otherwise grid gap + margin-bottom stack to 40px under Name. */
+  .form-row { grid-template-columns: 1fr; gap: 0; }
   .modal { padding: 32px 24px; }
   .modal h2 { font-size: 28px; }
   .hero-proof { gap: 28px; }
