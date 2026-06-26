@@ -487,10 +487,12 @@ body.nav-open .navbar { position: fixed; top: 0; left: 0; right: 0; }
 .badge {
   display: inline-flex; align-items: center;
   background: var(--primary-subtle); color: var(--accent-300);
+  border: 1px solid var(--border-strong);
   font-size: 12px; font-weight: 500; letter-spacing: 0.4px;
   padding: 4px 16px; border-radius: var(--rounded-full); white-space: nowrap;
   transition: background-color var(--duration-base) var(--ease-standard),
-              color var(--duration-base) var(--ease-standard);
+              color var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard);
 }
 /* The category badge sits on the card surface, which lightens on hover, so step
    it up to a solid fill to keep contrast. The "Case study" badge over the thumb
@@ -663,7 +665,7 @@ select.input:hover { border-color: var(--border-strong); }
 }
 .modal-close:hover { background: rgba(0,0,0,0.25); color: var(--ink); }
 .modal-close:focus-visible { outline: none; box-shadow: var(--shadow-focus-ring); }
-.modal .badge { margin-bottom: 20px; border: 1px solid var(--border-strong); }
+.modal .badge { margin-bottom: 20px; }
 .modal h2 {
   font-family: var(--font-display); font-weight: 600; font-size: 34px; line-height: 1.12;
   letter-spacing: -1px; color: var(--ink); margin: 0; padding-right: 56px;
