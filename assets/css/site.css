@@ -663,7 +663,7 @@ select.input:hover { border-color: var(--border-strong); }
 }
 .modal-close:hover { background: rgba(0,0,0,0.25); color: var(--ink); }
 .modal-close:focus-visible { outline: none; box-shadow: var(--shadow-focus-ring); }
-.modal .badge { margin-bottom: 20px; background: var(--primary); color: var(--on-primary); }
+.modal .badge { margin-bottom: 20px; border: 1px solid var(--border-strong); }
 .modal h2 {
   font-family: var(--font-display); font-weight: 600; font-size: 34px; line-height: 1.12;
   letter-spacing: -1px; color: var(--ink); margin: 0; padding-right: 56px;
