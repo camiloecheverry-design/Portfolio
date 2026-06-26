@@ -693,6 +693,33 @@ select.input:hover { border-color: var(--border-strong); }
 .modal-divider { height: 1px; background: var(--border); margin: 32px 0; }
 .modal-foot { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
 
+/* ---- Experience modal specific ---- */
+.exp-modal .exp-modal-meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px;
+  margin: 14px 0 28px;
+}
+.exp-modal .exp-modal-co {
+  font-size: 16px; color: var(--accent-300); font-weight: 500;
+}
+.exp-modal .exp-modal-sep { color: var(--muted); }
+.exp-modal .exp-modal-date {
+  font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+  letter-spacing: 0.3px; font-variant-numeric: tabular-nums;
+}
+.exp-modal .exp-modal-list {
+  list-style: none; padding: 0; margin: 0 0 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.exp-modal .exp-modal-list li {
+  position: relative; padding-left: 20px;
+  font-size: 16px; line-height: 1.65; color: var(--body);
+}
+.exp-modal .exp-modal-list li::before {
+  content: ""; position: absolute; left: 0; top: 10px;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--primary);
+}
+.exp-modal .exp-modal-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
 /* ============================================================
    FOOTER
    ============================================================ */

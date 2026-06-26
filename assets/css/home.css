@@ -270,6 +270,24 @@
 }
 .home-v2 .exp-item:hover::before { opacity: 1; }
 .home-v2 .exp-item > * { position: relative; z-index: 1; }
+/* clickable experience card */
+.home-v2 .exp-item[data-experience] { cursor: pointer; }
+.home-v2 .exp-item[data-experience]:focus-visible {
+  outline: none; box-shadow: var(--shadow-focus-ring);
+}
+/* "View details" pill */
+.home-v2 .exp-view-pill {
+  position: absolute; bottom: 20px; right: 20px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 500; color: var(--ink);
+  background: var(--surface-card); border: 1px solid var(--border);
+  border-radius: var(--rounded-full); padding: 6px 14px;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity var(--duration-base) var(--ease-standard),
+              transform var(--duration-base) var(--ease-standard);
+  pointer-events: none;
+}
+.home-v2 .exp-item[data-experience]:hover .exp-view-pill { opacity: 1; transform: translateY(0); }
 /* accent the "Most recent" badge */
 .home-v2 .exp-item:first-child .exp-badge .badge { background: var(--primary); color: var(--on-primary); }
 /* period → vertical year + pill-styled range */

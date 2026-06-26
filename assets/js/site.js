@@ -231,6 +231,86 @@
     });
   }
 
+  /* ---- Experience modal ---- */
+  function initExpModal() {
+    var overlay = document.querySelector("[data-exp-modal]");
+    if (!overlay) return;
+    var lastFocus = null;
+
+    function fill(data) {
+      var badge = overlay.querySelector("[data-em-badge]");
+      if (badge) badge.textContent = data.company + (data.type ? " · " + data.type : "");
+
+      var title = overlay.querySelector("[data-em-title]");
+      if (title) title.textContent = data.title || "";
+
+      var co = overlay.querySelector("[data-em-co]");
+      if (co) co.textContent = (data.company || "") + (data.location ? " · " + data.location : "");
+
+      var date = overlay.querySelector("[data-em-date]");
+      if (date) date.textContent = data.date || "";
+
+      var list = overlay.querySelector("[data-em-bullets]");
+      if (list) {
+        list.innerHTML = "";
+        (data.bullets || []).forEach(function (b) {
+          var li = document.createElement("li");
+          li.textContent = b;
+          list.appendChild(li);
+        });
+      }
+
+      var tagsWrap = overlay.querySelector("[data-em-tags]");
+      if (tagsWrap) {
+        tagsWrap.innerHTML = "";
+        (data.tags || []).forEach(function (t) {
+          var span = document.createElement("span");
+          span.className = "tag";
+          span.textContent = t;
+          tagsWrap.appendChild(span);
+        });
+      }
+
+      if (window.JCE && window.JCE.initIcons) window.JCE.initIcons();
+    }
+
+    function open(card) {
+      var data;
+      try { data = JSON.parse(card.getAttribute("data-experience") || "{}"); }
+      catch (e) { data = {}; }
+      fill(data);
+      lastFocus = card;
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+      var closeBtn = overlay.querySelector(".modal-close");
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function close() {
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+      if (lastFocus) lastFocus.focus();
+    }
+
+    document.querySelectorAll("[data-experience]").forEach(function (card) {
+      card.addEventListener("click", function () { open(card); });
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(card); }
+      });
+    });
+
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) close();
+    });
+
+    var closeBtn = overlay.querySelector(".modal-close");
+    if (closeBtn) closeBtn.addEventListener("click", close);
+
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay.classList.contains("open")) close();
+    });
+  }
+
   /* ---- Projects carousel arrows (carousel layout) ---- */
   function initCarousel() {
     var stage = document.querySelector("[data-carousel-stage]");
@@ -544,6 +624,7 @@
     initActiveNav();
     initReveal();
     initModal();
+    initExpModal();
     initCarousel();
     initForm();
     initErrorBack();
