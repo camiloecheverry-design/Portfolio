@@ -270,6 +270,34 @@
 }
 .home-v2 .exp-item:hover::before { opacity: 1; }
 .home-v2 .exp-item > * { position: relative; z-index: 1; }
+/* exp-item grid: main content left, period (year + range) right */
+.home-v2 .exp-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: 0;
+  align-items: start;
+}
+/* exp-main: [h3 + co stacked] [badge centered alongside] then body + tags full-width */
+.home-v2 .exp-main {
+  grid-column: 1; grid-row: 1;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: start;
+  column-gap: 16px;
+}
+.home-v2 .exp-main h3        { grid-column: 1; grid-row: 1; margin-bottom: 4px; }
+.home-v2 .exp-main .exp-badge { grid-column: 2; grid-row: 1; align-self: center; }
+.home-v2 .exp-main .co       { grid-column: 1; grid-row: 2; }
+.home-v2 .exp-main p         { grid-column: 1 / -1; grid-row: 3; max-width: none; }
+.home-v2 .exp-main .exp-tags  { grid-column: 1 / -1; grid-row: 4; }
+.home-v2 .exp-period {
+  grid-column: 2; grid-row: 1;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+}
+/* period text */
+.home-v2 .exp-period { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px; font-size: 12px; }
+.home-v2 .exp-period .yr { font-size: 28px; letter-spacing: -0.6px; color: var(--ink); font-family: var(--font-display); font-weight: 600; }
+.home-v2 .exp-period .exp-range { text-align: right; }
 /* clickable experience card */
 .home-v2 .exp-item[data-experience] { cursor: pointer; }
 .home-v2 .exp-item[data-experience]:focus-visible {
@@ -289,11 +317,7 @@
 }
 .home-v2 .exp-item[data-experience]:hover .exp-view-pill { opacity: 1; transform: translateY(0); }
 /* accent the "Most recent" badge */
-.home-v2 .exp-item:first-child .exp-badge .badge { background: var(--primary); color: var(--on-primary); }
-/* period → vertical year + pill-styled range */
-/* period range in the DS mono technical-label voice (the year keeps Outfit) */
-.home-v2 .exp-period { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px; font-size: 12px; }
-.home-v2 .exp-period .yr { font-size: 28px; letter-spacing: -0.6px; color: var(--ink); }
+.home-v2 .exp-item:first-child .exp-badge .badge { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
 
 /* ---- services: soft corner light + content above ---- */
 .home-v2 .service-card { isolation: isolate; overflow: hidden; }
@@ -424,7 +448,18 @@
   .home-v2 .hero h1 { font-size: 40px; letter-spacing: -1px; }
   .hero-portrait-card { min-height: 380px; }
   .hero-bento .ghost-pill { display: none; }
-  .home-v2 .exp-item { padding: 24px; }
+  .home-v2 .exp-item { padding: 24px; grid-template-columns: 1fr; row-gap: 24px; }
+  .home-v2 .exp-period {
+    grid-column: 1; grid-row: 1;
+    flex-direction: row; justify-content: space-between; align-items: baseline;
+  }
+  .home-v2 .exp-period .exp-range { text-align: right; }
+  .home-v2 .exp-main { grid-column: 1; grid-row: 2; display: flex; flex-direction: column; }
+  .home-v2 .exp-main h3        { order: 1; margin-bottom: 4px; }
+  .home-v2 .exp-main .co       { order: 2; margin-bottom: 24px; }
+  .home-v2 .exp-main .exp-badge { order: 3; align-self: flex-start; margin-bottom: 24px; }
+  .home-v2 .exp-main p         { order: 4; margin: 0 0 24px; }
+  .home-v2 .exp-main .exp-tags  { order: 5; }
   .home-v2 #about .sgp-1, .home-v2 #contact .sgp-1, .home-v2 #contact .sgp-2 { display: none; }
 }
 @media (max-width: 480px) {

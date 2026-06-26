@@ -914,22 +914,31 @@ select.input:hover { border-color: var(--border-strong); }
 
 /* education — featured degree + secondary certifications */
 .edu-feature {
-  display: grid; grid-template-columns: auto 1fr auto; gap: 36px; align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  grid-template-rows: auto auto;
+  column-gap: 24px; row-gap: 24px;
+  align-items: start;
   background: var(--surface-raised); border: 1px solid var(--border);
   border-radius: var(--rounded-lg); padding: 36px 40px;
 }
 .edu-feature .study-icon {
+  grid-column: 1; grid-row: 1;
   width: 76px; height: 76px; background: var(--primary);
   border-color: var(--primary); color: var(--on-primary);
 }
-.edu-feature .edu-badge { display: block; margin-bottom: 14px; }
+.edu-feature .study-main { grid-column: 2; grid-row: 1; }
+.edu-feature .edu-badge  { grid-column: 3; grid-row: 1; align-self: center; }
+.edu-feature .study-year { grid-column: 4; grid-row: 1; font-size: 22px; }
+.edu-feature .inst       { grid-column: 1 / -1; grid-row: 2; font-size: 16px; color: var(--accent-300); font-weight: 500; margin: 0; }
+.edu-feature .study-body {
+  grid-column: 1 / -1; grid-row: 3;
+  font-size: 15px; line-height: 1.6; color: var(--body); margin: 0;
+}
 .edu-feature h3 {
   font-family: var(--font-display); font-weight: 600; font-size: 27px; line-height: 1.22;
   letter-spacing: -0.5px; color: var(--ink); margin: 0;
 }
-.edu-feature .inst { font-size: 16px; color: var(--accent-300); margin-top: 8px; font-weight: 500; }
-.edu-feature p { font-size: 15px; line-height: 1.6; color: var(--body); margin: 14px 0 0; max-width: 64ch; }
-.edu-feature .study-year { font-size: 22px; align-self: flex-start; }
 
 .cert-block { margin-top: 40px; }
 .cert-label {
@@ -1345,8 +1354,16 @@ select.input:hover { border-color: var(--border-strong); }
   .page-hero h1 { font-size: 42px; letter-spacing: -1px; }
   .study-card { grid-template-columns: auto 1fr; }
   .study-year { grid-column: 2; grid-row: 2; }
-  .edu-feature { grid-template-columns: auto 1fr; padding: 28px; gap: 24px; }
-  .edu-feature .study-year { grid-column: 2; grid-row: 2; }
+  .edu-feature {
+    grid-template-columns: auto 1fr;
+    padding: 28px; column-gap: 16px; row-gap: 24px;
+  }
+  .edu-feature .study-year { grid-column: 1; grid-row: 1; }
+  .edu-feature .edu-badge  { grid-column: 2; grid-row: 1; justify-self: end; align-self: center; }
+  .edu-feature .study-icon { grid-column: 1; grid-row: 2; width: 60px; height: 60px; }
+  .edu-feature .study-main { grid-column: 2; grid-row: 2; }
+  .edu-feature .inst       { grid-column: 1 / -1; grid-row: 3; }
+  .edu-feature .study-body { grid-column: 1 / -1; grid-row: 4; }
   .cert-list { grid-template-columns: 1fr; }
   .blog-grid, .related-row { grid-template-columns: 1fr; }
   .diff-text h2 { font-size: 32px; }
