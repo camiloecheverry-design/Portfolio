@@ -264,27 +264,12 @@
   background: radial-gradient(120% 80% at 12% -10%, rgba(0,110,245,0.12), rgba(0,110,245,0) 50%);
   opacity: 0; transition: opacity var(--duration-base) var(--ease-standard);
 }
-.home-v2 .exp-item::after {
-  content: "View details →";
-  position: absolute; bottom: 20px; right: 24px; z-index: 2;
-  font-size: 12px; font-weight: 500; letter-spacing: 0.3px;
-  color: var(--accent-300);
-  background: rgba(0,110,245,0.12);
-  border: 1px solid rgba(0,110,245,0.25);
-  border-radius: var(--rounded-full);
-  padding: 5px 14px;
-  opacity: 0; transform: translateY(4px);
-  transition: opacity var(--duration-base) var(--ease-standard),
-              transform var(--duration-base) var(--ease-standard);
-  pointer-events: none;
-}
 .home-v2 .exp-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 44px rgba(0,14,31,0.5);
   outline: 1px solid rgba(0,110,245,0.35);
 }
 .home-v2 .exp-item:hover::before { opacity: 1; }
-.home-v2 .exp-item:hover::after  { opacity: 1; transform: translateY(0); }
 .home-v2 .exp-item > * { position: relative; z-index: 1; }
 /* exp-item grid: main content left, period (year + range) right */
 .home-v2 .exp-item {
@@ -530,7 +515,6 @@
   /* experience cards */
   .home-v2 .exp-item:hover                      { transform: none; box-shadow: none; border-color: var(--border); outline: none; }
   .home-v2 .exp-item:hover::before              { opacity: 0; }
-  .home-v2 .exp-item:hover::after               { opacity: 0; transform: translateY(4px); }
 
   /* logo strip chips */
   .home-v2 .logo-row .co:hover                  { transform: none; color: var(--body); border-color: var(--hairline); background: var(--surface-card); }
