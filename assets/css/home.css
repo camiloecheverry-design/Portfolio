@@ -515,6 +515,7 @@
   /* experience cards */
   .home-v2 .exp-item:hover                      { transform: none; box-shadow: none; border-color: var(--border); outline: none; }
   .home-v2 .exp-item:hover::before              { opacity: 0; }
+  .home-v2 .exp-item[data-experience]:hover .exp-view-pill { opacity: 0; transform: translateY(6px); }
 
   /* logo strip chips */
   .home-v2 .logo-row .co:hover                  { transform: none; color: var(--body); border-color: var(--hairline); background: var(--surface-card); }
