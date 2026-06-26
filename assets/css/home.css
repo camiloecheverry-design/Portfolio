@@ -494,7 +494,7 @@
 }
 
 /* 3. Strip all hover transforms / border / shadow on touch devices. */
-@media (hover: none) {
+@media (hover: none), (pointer: coarse) {
   /* stat pills */
   .bento-stat:hover                             { transform: none; box-shadow: none; border-color: var(--hairline); }
   .bento-stat.accent:hover                      { box-shadow: none; }

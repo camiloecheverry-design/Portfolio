@@ -1444,7 +1444,7 @@ select.input:hover { border-color: var(--border-strong); }
       Without this: (a) hover styles stick after a tap, (b) links with
       :hover CSS require two taps — first tap fires hover, second follows
       the link. @media (hover: none) matches any device with no mouse. */
-@media (hover: none) {
+@media (hover: none), (pointer: coarse) {
   /* Buttons — snap back to their resting appearance on touch */
   .btn-primary:hover                { background: var(--primary); }
   .btn-secondary:hover              { background: transparent; border-color: var(--border); }
