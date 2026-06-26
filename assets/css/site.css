@@ -1457,12 +1457,11 @@ select.input:hover { border-color: var(--border-strong); }
   .nav-ext:hover                    { color: var(--muted); }
   .footer-link:hover                { color: var(--muted); text-decoration: none; }
 
-  /* Project cards */
+  /* Project cards — strip all sticky-hover states on touch */
   .project-card:hover               { transform: none; box-shadow: none; border-color: var(--hairline); }
-  .project-card:hover .project-thumb .ph { transform: none; }
-  /* Sticky-hover suppression: on touch the finger resting on a card fires
-     :hover, surfacing the "View case study" pill. Keep it hidden so there's
-     no hover affordance on mobile. */
+  .project-card:hover .project-thumb { background: var(--surface-raised); }
+  .project-card:hover .project-thumb .ph { transform: none; color: var(--muted); }
+  .project-card:hover .project-meta-row .badge { background: var(--surface-raised); color: var(--muted); }
   .project-card:hover .view-pill    { opacity: 0; transform: translateY(6px); }
 
   /* Icon buttons */
