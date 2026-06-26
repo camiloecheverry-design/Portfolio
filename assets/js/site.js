@@ -636,5 +636,11 @@
     boot();
   }
 
+  // Prevent iOS sticky-hover: a passive touchstart listener stops the browser
+  // from treating scroll-touches as :hover triggers on non-anchor elements.
+  if ('ontouchstart' in window) {
+    document.documentElement.addEventListener('touchstart', function () {}, { passive: true });
+  }
+
   window.JCE = { initIcons: initIcons };
 })();
