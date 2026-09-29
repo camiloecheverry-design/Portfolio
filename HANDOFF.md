@@ -53,8 +53,9 @@ about.html        About — bio, education, "what sets me apart", achievements
                   bento grid (CSS/SVG art), tools.
 resume.html       Full résumé — experience, education, certifications, skills,
                   sidebar (contact, tools, languages, availability).
-blog.html         Blog index — posts published on Medium, linked out.
-article.html      Sample on-site article template. Unpublished (redirects to 404).
+blog.html         Blog index — featured post card.
+article.html      The one published post ("Cómo dejé de iterar a ciegas con la IA"),
+                  full text, in Spanish. Also on Medium.
 contact.html      Contact page — methods, FAQ, and the main contact form.
 404.html          Branded not-found page (noindex). Self-contained styles in a
                   <style> block.
@@ -103,9 +104,8 @@ assets/files/                    CV PDF (linked from the résumé page).
 
 ## Known gaps (context, not tasks — only act if asked)
 
-- **Blog links out to Medium.** `blog.html` lists real posts only, each linking to
-  Medium. `article.html` (a sample on-site article) stays unpublished: `/article`
-  still redirects to `/404` and it is not in the sitemap.
+- **Blog has one post.** `blog.html` features `article.html`. A second post
+  needs its own HTML file (copy `article.html`) and a card on `blog.html`.
 - **Project case studies** are modal blurbs that point to Behance; no dedicated
   case-study pages, and thumbnails are numbered placeholders (no real images).
 - **About-page images** — two `<image-slot>`s (`about-page-portrait`,
