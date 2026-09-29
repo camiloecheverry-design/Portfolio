@@ -36,8 +36,17 @@
       "@type": "Person",
       "name": "Juan Camilo Echeverry Marmolejo",
       "url": "https://www.camiloecheverry.com/",
-      "sameAs": ["https://www.linkedin.com/in/juancamiloecheverry", "https://www.behance.net/Camilo-Echeverry"]
-    }
+      "sameAs": ["https://www.linkedin.com/in/juancamiloecheverry", "https://www.behance.net/Camilo-Echeverry", "https://medium.com/@camiloem.1105"]
+    },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Cómo dejé de iterar a ciegas con la IA",
+        "inLanguage": "es",
+        "url": "https://medium.com/@camiloem.1105/c%C3%B3mo-dej%C3%A9-de-iterar-a-ciegas-con-la-ia-5f89761be8e6",
+        "author": { "@type": "Person", "name": "Juan Camilo Echeverry Marmolejo" }
+      }
+    ]
   }
   </script>
 </head>
@@ -49,7 +58,7 @@
       <div class="nav-zone-left">
         <a class="nav-link" data-nav-path="about.html" href="about.html">About</a>
         <a class="nav-link" data-nav-path="resume.html" href="resume.html">Résumé</a>
-        <span class="nav-link is-locked" data-nav-path="blog.html" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span>
+        <a class="nav-link" data-nav-path="blog.html" href="blog.html">Blog</a>
         <a class="nav-link" data-nav-path="contact.html" href="contact.html">Contact</a>
       </div>
       <div class="nav-zone-center">
@@ -67,7 +76,7 @@
   <div class="mobile-menu" data-mobile-menu>
     <a class="nav-link" data-nav-path="about.html" href="about.html">About</a>
     <a class="nav-link" data-nav-path="resume.html" href="resume.html">Résumé</a>
-    <span class="nav-link is-locked" data-nav-path="blog.html" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span>
+    <a class="nav-link" data-nav-path="blog.html" href="blog.html">Blog</a>
     <a class="nav-link" data-nav-path="contact.html" href="contact.html">Contact</a>
     <div class="mobile-ext-row">
       <a class="nav-ext" href="https://www.linkedin.com/in/juancamiloecheverry" target="_blank" rel="noopener"><span>LinkedIn</span><i data-lucide="arrow-up-right"></i></a>
@@ -86,89 +95,21 @@
 
     <section class="section-tight">
       <div class="container">
-        <!-- filters -->
-        <div class="blog-filters" data-blog-filters>
-          <button class="filter-chip active" data-filter="all">All posts</button>
-          <button class="filter-chip" data-filter="ai">AI &amp; design</button>
-          <button class="filter-chip" data-filter="systems">Design systems</button>
-          <button class="filter-chip" data-filter="process">Process</button>
-          <button class="filter-chip" data-filter="conversion">Conversion</button>
-          <button class="filter-chip" data-filter="career">Career</button>
-        </div>
-
-        <!-- featured -->
-        <a class="blog-featured reveal" href="404.html" data-category="ai">
-          <div class="bf-thumb"><span class="ph">AI</span></div>
+        <!-- featured: posts live on Medium, cards link out -->
+        <a class="blog-featured reveal" href="https://medium.com/@camiloem.1105/c%C3%B3mo-dej%C3%A9-de-iterar-a-ciegas-con-la-ia-5f89761be8e6" target="_blank" rel="noopener" data-category="ai">
+          <div class="bf-thumb"><span class="ph">IA</span></div>
           <div class="bf-body">
-            <div class="project-meta-row"><span class="badge">Featured · AI &amp; design</span></div>
-            <h2>Designing in the age of AI: where the craft still matters</h2>
-            <p>AI can generate a hundred screens before lunch. That's exactly why judgment, research, and systems thinking are worth more than ever. Here's how I fold AI into my workflow without outsourcing the thinking.</p>
+            <div class="project-meta-row"><span class="badge">Latest · AI &amp; design</span><span class="badge">Español</span></div>
+            <h2 lang="es">Cómo dejé de iterar a ciegas con la IA</h2>
             <div class="bf-meta">
-              <span>Jun 2, 2026</span><span class="dot" style="width:3px;height:3px;border-radius:50%;background:var(--muted);display:inline-block;"></span><span>8 min read</span>
+              <span>Medium</span><span class="dot" style="width:3px;height:3px;border-radius:50%;background:var(--muted);display:inline-block;"></span><span style="display:inline-flex;align-items:center;gap:4px;">Read on Medium <i data-lucide="arrow-up-right" class="icon-sm"></i></span>
             </div>
           </div>
         </a>
 
-        <!-- grid -->
-        <div class="blog-grid" data-blog-grid>
-          <a class="blog-card reveal" href="404.html" data-category="process">
-            <div class="bc-thumb"><span class="cat"><span class="badge">Process</span></span><span class="ph">01</span></div>
-            <div class="bc-body">
-              <h3>The subscription merge problem nobody talks about</h3>
-              <p class="bc-excerpt">Two accounts, one user, conflicting states. A look at how I untangled a deceptively gnarly flow, and what edge cases taught me.</p>
-              <div class="bc-meta"><span>May 24, 2026</span><span class="dot"></span><span>6 min read</span></div>
-            </div>
-          </a>
-
-          <a class="blog-card reveal" href="404.html" data-category="systems">
-            <div class="bc-thumb"><span class="cat"><span class="badge">Design systems</span></span><span class="ph">02</span></div>
-            <div class="bc-body">
-              <h3>Why I build design systems before I build screens</h3>
-              <p class="bc-excerpt">Per-screen updates are a tax on every future change. Starting with tokens and components pays it down before the bill arrives.</p>
-              <div class="bc-meta"><span>May 9, 2026</span><span class="dot"></span><span>5 min read</span></div>
-            </div>
-          </a>
-
-          <a class="blog-card reveal" href="404.html" data-category="process">
-            <div class="bc-thumb"><span class="cat"><span class="badge">Process</span></span><span class="ph">03</span></div>
-            <div class="bc-body">
-              <h3>Reading the data before you draw</h3>
-              <p class="bc-excerpt">My research-first workflow: how analytics, journey maps, and a few honest questions reshape a design before it exists.</p>
-              <div class="bc-meta"><span>Apr 21, 2026</span><span class="dot"></span><span>7 min read</span></div>
-            </div>
-          </a>
-
-          <a class="blog-card reveal" href="404.html" data-category="conversion">
-            <div class="bc-thumb"><span class="cat"><span class="badge">Conversion</span></span><span class="ph">04</span></div>
-            <div class="bc-body">
-              <h3>A/B testing taught me to kill my favorite designs</h3>
-              <p class="bc-excerpt">The version I loved lost. The version I doubted converted. A short story about ego, evidence, and letting users decide.</p>
-              <div class="bc-meta"><span>Apr 3, 2026</span><span class="dot"></span><span>4 min read</span></div>
-            </div>
-          </a>
-
-          <a class="blog-card reveal" href="404.html" data-category="career">
-            <div class="bc-thumb"><span class="cat"><span class="badge">Career</span></span><span class="ph">05</span></div>
-            <div class="bc-body">
-              <h3>From industrial design to product design</h3>
-              <p class="bc-excerpt">What a degree in physical product design quietly gave me: systems thinking, constraints as fuel, and respect for the user's hands.</p>
-              <div class="bc-meta"><span>Mar 18, 2026</span><span class="dot"></span><span>6 min read</span></div>
-            </div>
-          </a>
-
-          <a class="blog-card reveal" href="404.html" data-category="career">
-            <div class="bc-thumb"><span class="cat"><span class="badge">Practice</span></span><span class="ph">06</span></div>
-            <div class="bc-body">
-              <h3>Shipping for four countries</h3>
-              <p class="bc-excerpt">Designing across the UK, France, Spain, and Canada. Notes on localization, cultural assumptions, and what travels and what doesn't.</p>
-              <div class="bc-meta"><span>Feb 27, 2026</span><span class="dot"></span><span>5 min read</span></div>
-            </div>
-          </a>
-        </div>
-
         <div class="section-cta center" style="margin-top:64px;">
-          <span class="cta-note">More posts on the way. Follow along on LinkedIn for new writing and project updates.</span>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/juancamiloecheverry" target="_blank" rel="noopener">Follow on LinkedIn <i data-lucide="arrow-up-right" class="icon-sm"></i></a>
+          <span class="cta-note">More posts on the way. Follow along on Medium for new writing.</span>
+          <a class="btn btn-secondary" href="https://medium.com/@camiloem.1105" target="_blank" rel="noopener">Follow on Medium <i data-lucide="arrow-up-right" class="icon-sm"></i></a>
         </div>
       </div>
     </section>
@@ -187,7 +128,7 @@
           <ul>
             <li><a class="footer-link" href="about.html">About me</a></li>
             <li><a class="footer-link" href="resume.html">Résumé</a></li>
-            <li><span class="footer-link is-locked" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span></li>
+            <li><a class="footer-link" href="blog.html">Blog</a></li>
             <li><a class="footer-link" href="contact.html">Contact</a></li>
             <li><a class="footer-link" href="privacy.html">Privacy</a></li>
           </ul>
