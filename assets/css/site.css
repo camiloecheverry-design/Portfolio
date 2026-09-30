@@ -1240,7 +1240,8 @@ select.input:hover { border-color: var(--border-strong); }
 /* ============================================================
    ARTICLE PAGE
    ============================================================ */
-.article { max-width: 760px; margin: 0 auto; }
+/* bottom padding matches .section so the author card clears the footer */
+.article { max-width: 760px; margin: 0 auto; padding-bottom: 112px; }
 .article-hero { padding: 80px 0 48px; }
 .article-hero h1 {
   font-family: var(--font-display); font-weight: 600; font-size: 48px; line-height: 1.1;
@@ -1390,6 +1391,7 @@ select.input:hover { border-color: var(--border-strong); }
   .blog-grid, .related-row { grid-template-columns: 1fr; }
   .diff-text h2 { font-size: 32px; }
   .article-hero h1 { font-size: 34px; }
+  .article { padding-bottom: 80px; }
   .article-body { font-size: 17px; }
   .article-body blockquote { font-size: 19px; padding: 20px 24px; }
   .article-body pre { font-size: 12px; padding: 20px; }
