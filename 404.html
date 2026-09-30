@@ -9,12 +9,12 @@
   <meta name="author" content="Juan Camilo Echeverry Marmolejo" />
   <meta name="theme-color" content="#000E1F" />
 
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
-  <link rel="preload" href="assets/css/fonts/outfit-600.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/css/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="assets/css/colors_and_type.css" />
-  <link rel="stylesheet" href="assets/css/site.css" />
-  <script src="assets/js/fonts-loading.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+  <link rel="preload" href="/assets/css/fonts/outfit-600.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/css/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/colors_and_type.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script src="/assets/js/fonts-loading.js"></script>
 
   <style>
     .error-page { padding: 120px 0 96px; }
@@ -61,6 +61,7 @@
       .error-page h1 { font-size: 28px; }
     }
   </style>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -68,13 +69,13 @@
   <header class="navbar">
     <nav class="nav-inner" aria-label="Primary">
       <div class="nav-zone-left">
-        <a class="nav-link" data-nav-path="about.html" href="about.html">About</a>
-        <a class="nav-link" data-nav-path="resume.html" href="resume.html">Résumé</a>
-        <span class="nav-link is-locked" data-nav-path="blog.html" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span>
-        <a class="nav-link" data-nav-path="contact.html" href="contact.html">Contact</a>
+        <a class="nav-link" data-nav-path="about.html" href="/about.html">About</a>
+        <a class="nav-link" data-nav-path="resume.html" href="/resume.html">Résumé</a>
+        <a class="nav-link" data-nav-path="blog.html" href="/blog.html">Blog</a>
+        <a class="nav-link" data-nav-path="contact.html" href="/contact.html">Contact</a>
       </div>
       <div class="nav-zone-center">
-        <a class="wordmark" href="index.html" aria-label="Juan Camilo Echeverry, home">Camilo Echeverry<span class="pt">.</span></a>
+        <a class="wordmark" href="/index.html" aria-label="Juan Camilo Echeverry, home">Camilo Echeverry<span class="pt">.</span></a>
       </div>
       <div class="nav-zone-right">
         <a class="nav-ext" href="https://www.linkedin.com/in/juancamiloecheverry" target="_blank" rel="noopener"><span>LinkedIn</span><i data-lucide="arrow-up-right"></i></a>
@@ -86,10 +87,10 @@
   </header>
 
   <div class="mobile-menu" data-mobile-menu>
-    <a class="nav-link" data-nav-path="about.html" href="about.html">About</a>
-    <a class="nav-link" data-nav-path="resume.html" href="resume.html">Résumé</a>
-    <span class="nav-link is-locked" data-nav-path="blog.html" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span>
-    <a class="nav-link" data-nav-path="contact.html" href="contact.html">Contact</a>
+    <a class="nav-link" data-nav-path="about.html" href="/about.html">About</a>
+    <a class="nav-link" data-nav-path="resume.html" href="/resume.html">Résumé</a>
+    <a class="nav-link" data-nav-path="blog.html" href="/blog.html">Blog</a>
+    <a class="nav-link" data-nav-path="contact.html" href="/contact.html">Contact</a>
     <div class="mobile-ext-row">
       <a class="nav-ext" href="https://www.linkedin.com/in/juancamiloecheverry" target="_blank" rel="noopener"><span>LinkedIn</span><i data-lucide="arrow-up-right"></i></a>
       <a class="nav-ext" href="https://www.behance.net/Camilo-Echeverry" target="_blank" rel="noopener"><span>Behance</span><i data-lucide="arrow-up-right"></i></a>
@@ -106,16 +107,17 @@
           <p class="lead">The link is broken or the page has moved. Nothing's lost, let's get you back to something useful.</p>
           <div class="error-actions">
             <a class="btn btn-secondary btn-lg" data-error-back href="#" hidden><i data-lucide="arrow-left" class="icon-sm"></i> Go back</a>
-            <a class="btn btn-primary btn-lg" data-error-home href="index.html"><i data-lucide="home" class="icon-sm"></i> Back home</a>
-            <a class="btn btn-secondary btn-lg" href="contact.html">Contact me <i data-lucide="arrow-right" class="icon-sm"></i></a>
+            <a class="btn btn-primary btn-lg" data-error-home href="/index.html"><i data-lucide="home" class="icon-sm"></i> Back home</a>
+            <a class="btn btn-secondary btn-lg" href="/contact.html">Contact me <i data-lucide="arrow-right" class="icon-sm"></i></a>
           </div>
 
           <div class="error-links">
             <p class="lbl">Or jump straight to</p>
             <div class="error-link-row">
-              <a class="error-link" href="about.html"><i data-lucide="user"></i> About</a>
-              <a class="error-link" href="resume.html"><i data-lucide="file-text"></i> Résumé</a>
-              <a class="error-link" href="index.html#work"><i data-lucide="layout-grid"></i> Selected work</a>
+              <a class="error-link" href="/about.html"><i data-lucide="user"></i> About</a>
+              <a class="error-link" href="/resume.html"><i data-lucide="file-text"></i> Résumé</a>
+              <a class="error-link" href="/index.html#work"><i data-lucide="layout-grid"></i> Selected work</a>
+              <a class="error-link" href="/blog.html"><i data-lucide="pen-line"></i> Blog</a>
             </div>
           </div>
         </div>
@@ -127,17 +129,17 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a class="wordmark" href="index.html">Camilo Echeverry<span class="pt">.</span></a>
+          <a class="wordmark" href="/index.html">Camilo Echeverry<span class="pt">.</span></a>
           <p>UX/UI &amp; product designer turning ambiguous briefs into design that converts, scales, and ships.</p>
-          <a class="btn btn-primary" href="contact.html">Start a project <i data-lucide="arrow-right" class="icon-sm"></i></a>
+          <a class="btn btn-primary" href="/contact.html">Start a project <i data-lucide="arrow-right" class="icon-sm"></i></a>
         </div>
         <div class="footer-col">
           <h4>Explore</h4>
           <ul>
-            <li><a class="footer-link" href="about.html">About me</a></li>
-            <li><a class="footer-link" href="resume.html">Résumé</a></li>
-            <li><span class="footer-link is-locked" aria-disabled="true" data-tooltip="Coming soon" tabindex="0" role="link">Blog <i data-lucide="lock"></i></span></li>
-            <li><a class="footer-link" href="contact.html">Contact</a></li>
+            <li><a class="footer-link" href="/about.html">About me</a></li>
+            <li><a class="footer-link" href="/resume.html">Résumé</a></li>
+            <li><a class="footer-link" href="/blog.html">Blog</a></li>
+            <li><a class="footer-link" href="/contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -161,7 +163,7 @@
   </footer>
 
   <script src="https://unpkg.com/lucide@1.21.0/dist/umd/lucide.min.js" integrity="sha384-xphWpUp6pRlNpM8BxCtyoW96oteA0kPxUX0VP6V32gICuE4ViDFBfaoyj5BS7M4w" crossorigin="anonymous"></script>
-  <script src="assets/js/site.js"></script>
+  <script src="/assets/js/site.js"></script>
 
   <template id="__bundler_thumbnail">
     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">

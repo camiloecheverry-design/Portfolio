@@ -47,7 +47,7 @@ index.html      Home — hero, about teaser, experience, projects, services, con
 about.html      About — bio, academic background, differentiators, achievements, tools
 resume.html     Full résumé — experience, education, certifications, skills
 blog.html       Blog index — featured post + filterable card grid
-article.html    A full blog article
+blog/           Blog posts, one HTML file per post, served at /blog/<slug>
 contact.html    Contact — methods, FAQ, contact form
 404.html        Branded not-found page
 robots.txt / sitemap.xml

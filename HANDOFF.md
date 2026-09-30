@@ -53,9 +53,11 @@ about.html        About — bio, education, "what sets me apart", achievements
                   bento grid (CSS/SVG art), tools.
 resume.html       Full résumé — experience, education, certifications, skills,
                   sidebar (contact, tools, languages, availability).
-blog.html         Blog index — featured post + 6-card grid with category filters.
-article.html      A single full article (the one real post). Blog cards currently
-                  all link here — see "Known gaps".
+blog.html         Blog index — featured post card.
+blog/             One HTML file per post, served at /blog/<slug>. Posts sit one
+                  folder down, so their asset and page links start with ../
+                  First post: blog/como-deje-de-iterar-a-ciegas-con-la-ia.html
+                  (Spanish, also on Medium).
 contact.html      Contact page — methods, FAQ, and the main contact form.
 404.html          Branded not-found page (noindex). Self-contained styles in a
                   <style> block.
@@ -104,8 +106,9 @@ assets/files/                    CV PDF (linked from the résumé page).
 
 ## Known gaps (context, not tasks — only act if asked)
 
-- **Blog is one real article.** All 6 blog cards + the featured post link to the
-  same `article.html`. The other posts are titles/excerpts only.
+- **Blog has one post.** To add one: copy the existing post in `blog/` to
+  `blog/<slug>.html`, replace its content and head metadata, add a card on
+  `blog.html`, and add the URL to `sitemap.xml`. `/article` redirects to `/blog`.
 - **Project case studies** are modal blurbs that point to Behance; no dedicated
   case-study pages, and thumbnails are numbered placeholders (no real images).
 - **About-page images** — two `<image-slot>`s (`about-page-portrait`,

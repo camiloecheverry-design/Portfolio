@@ -223,7 +223,8 @@
   .pages-v2 .blog-card:hover,
   .pages-v2 .blog-featured:hover              { transform: none; box-shadow: none; border-color: var(--hairline); }
   .pages-v2 .blog-card:hover .bc-thumb .ph,
-  .pages-v2 .blog-featured:hover .bf-thumb .ph { transform: none; }
+  .pages-v2 .blog-featured:hover .bf-thumb .ph,
+  .pages-v2 .blog-featured:hover .bf-thumb .thumb-img { transform: none; }
 
   /* about / resume cards */
   .pages-v2 .edu-feature:hover,
