@@ -7,6 +7,8 @@
     { "source": "/blog.html",    "destination": "/blog",    "permanent": true },
     { "source": "/article",      "destination": "/blog",    "permanent": true },
     { "source": "/article.html", "destination": "/blog",    "permanent": true },
+    { "source": "/blog/como-deje-de-iterar-a-ciegas-con-la-ia",      "destination": "/blog/how-i-stopped-iterating-blindly-with-ai", "permanent": true },
+    { "source": "/blog/como-deje-de-iterar-a-ciegas-con-la-ia.html", "destination": "/blog/how-i-stopped-iterating-blindly-with-ai", "permanent": true },
     { "source": "/contact.html", "destination": "/contact", "permanent": true },
     { "source": "/privacy.html", "destination": "/privacy", "permanent": true },
     { "source": "/404.html",     "destination": "/404",     "permanent": true }
