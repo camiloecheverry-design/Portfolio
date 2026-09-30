@@ -1206,7 +1206,7 @@ select.input:hover { border-color: var(--border-strong); }
   font-family: var(--font-display); font-weight: 600; font-size: 32px; line-height: 1.15;
   letter-spacing: -0.8px; color: var(--ink); margin: 16px 0 0; text-wrap: balance;
 }
-.blog-featured .bf-body p { font-size: 16px; line-height: 1.6; color: var(--body); margin: 16px 0 0; }
+.blog-featured .bf-body p { font-size: 16px; line-height: 1.6; color: var(--body); margin: 16px 0 0; text-wrap: pretty; }
 .blog-featured .bf-meta { display: flex; align-items: center; gap: 12px; margin-top: 24px; font-size: 13px; color: var(--muted); }
 
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }

@@ -56,8 +56,8 @@ resume.html       Full résumé — experience, education, certifications, skill
 blog.html         Blog index — featured post card.
 blog/             One HTML file per post, served at /blog/<slug>. Posts sit one
                   folder down, so their asset and page links start with ../
-                  First post: blog/como-deje-de-iterar-a-ciegas-con-la-ia.html
-                  (Spanish, also on Medium).
+                  First post: blog/how-i-stopped-iterating-blindly-with-ai.html
+                  (English translation of a Spanish Medium post).
 contact.html      Contact page — methods, FAQ, and the main contact form.
 404.html          Branded not-found page (noindex). Self-contained styles in a
                   <style> block.
