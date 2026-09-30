@@ -568,10 +568,14 @@
 
   /* ---- Active nav link by pathname ---- */
   function initActiveNav() {
-    var path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+    // Compare without ".html" so clean URLs (/about) match too; any page
+    // inside /blog/ is a post and lights up the Blog link.
+    var parts = location.pathname.toLowerCase().split("/").filter(Boolean);
+    var page = parts[parts.length - 2] === "blog" ? "blog"
+      : (parts.pop() || "index").replace(/\.html$/, "");
     document.querySelectorAll("[data-nav-path]").forEach(function (link) {
-      var target = (link.getAttribute("data-nav-path") || "").toLowerCase();
-      if (target === path) {
+      var target = (link.getAttribute("data-nav-path") || "").toLowerCase().replace(/\.html$/, "");
+      if (target === page) {
         link.classList.add("active");
         link.setAttribute("aria-current", "page");
       }
